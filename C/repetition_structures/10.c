@@ -1,27 +1,21 @@
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
   int age = 0;
   int less_18_count = 0;
   int high_30_count = 0;
 
-  do
-  {
+  do {
     printf("Digite a idade (0 - cancelar): ");
     scanf("%d", &age);
 
-    if (age == 0)
-    {
+    if (age == 0) {
       break;
     }
 
-    if (age > 0 && age < 18)
-    {
+    if (age > 0 && age < 18) {
       less_18_count++;
-    }
-    else if (age > 30 && age <= 150)
-    {
+    } else if (age > 30 && age <= 150) {
       high_30_count++;
     }
 

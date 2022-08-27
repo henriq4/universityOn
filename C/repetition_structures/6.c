@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
   int total_nums, num = 0;
   int biggest = 0, lower = 0;
 
@@ -10,24 +9,20 @@ int main(void)
 
   printf("\n");
 
-  for (int i = 1; i <= total_nums; i++)
-  {
+  for (int i = 1; i <= total_nums; i++) {
     printf("Digite um número: ");
     scanf("%d", &num);
 
-    if (i == 1)
-    {
+    if (i == 1) {
       biggest = num;
       lower = num;
     }
 
-    if (num > biggest)
-    {
+    if (num > biggest) {
       biggest = num;
     }
 
-    if (num < lower)
-    {
+    if (num < lower) {
       lower = num;
     }
 

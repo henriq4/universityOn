@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
   int x, y, swap;
 
   printf("Insira um valor para x: ");
@@ -10,17 +9,14 @@ int main(void)
   printf("Insira um valor pra y: ");
   scanf("%d", &y);
 
-  if (x > y)
-  {
+  if (x > y) {
     swap = x;
     x = y;
     y = swap;
   }
 
-  for (int i = x; i <= y; i++)
-  {
-    if ((i % 5 == 2) || (i % 5 == 3))
-    {
+  for (int i = x; i <= y; i++) {
+    if ((i % 5 == 2) || (i % 5 == 3)) {
       printf("%d ", i);
     }
   }

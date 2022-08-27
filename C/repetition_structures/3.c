@@ -1,12 +1,10 @@
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
   float sum;
   int j = 1;
 
-  for (int i = 1; i <= 50; i++)
-  {
+  for (int i = 1; i <= 50; i++) {
     sum = sum + (j / i);
     j = j + 2;
   }

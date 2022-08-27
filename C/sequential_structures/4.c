@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   const float dolar_value = 4.87;
   float handle_value_dolar, out_value_real;
 

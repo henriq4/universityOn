@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
   int total_nums, num = 0;
   int sum = 0;
   float avarage = 0;
@@ -11,8 +10,7 @@ int main(void)
 
   printf("\n");
 
-  for (int i = 1; i <= total_nums; i++)
-  {
+  for (int i = 1; i <= total_nums; i++) {
     printf("Digite um número: ");
     scanf("%d", &num);
 

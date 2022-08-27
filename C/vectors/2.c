@@ -12,19 +12,18 @@
 //       count++;
 //     }
 
-//     printf("O total de ocorrências do número %d foi de %d\n.", vec[total_num], count);
+//     printf("O total de ocorrências do número %d foi de %d\n.",
+//     vec[total_num], count);
 //   }
 // }
 
-int main()
-{
+int main() {
   int lenght, vec[lenght];
 
   printf("Números a serem inseridos: ");
   scanf("%d", &lenght);
 
-  for (int i = 0; i < lenght; i++)
-  {
+  for (int i = 0; i < lenght; i++) {
     printf("Número %d: ", i + 1);
     scanf("%d", &vec[i]);
   }

@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main(void)
-{
+int main(void) {
   int area, comp, larg;
 
   printf("Insira a largura: ");
