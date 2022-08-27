@@ -1,0 +1,14 @@
+{
+  "*.{js,ts,tsx}": [
+    "eslint --fix --cache"
+  ],
+  "*.{json,yml,yaml}": [
+    "pnpm prettier --write"
+  ],
+  "*.dart": [
+    "flutter format"
+  ],
+  "*.c": [
+    "clang-format -i"
+  ]
+}
