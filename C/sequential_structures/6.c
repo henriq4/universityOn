@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   float handle_km, handle_gas;
   float gas_per_km;
 

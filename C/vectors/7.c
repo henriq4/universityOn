@@ -1,17 +1,14 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   int vec[1];
   int count = 0;
 
-  do
-  {
+  do {
     printf("Digite um número: ");
     scanf("%d", &vec[0]);
 
-    if (vec[0] == -1)
-    {
+    if (vec[0] == -1) {
       break;
     }
 

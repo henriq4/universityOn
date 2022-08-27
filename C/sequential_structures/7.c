@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   float a, b, c;
   float first_calc, second_calc, third_calc, fourth_calc;
 
@@ -22,7 +21,8 @@ int main()
 
   fourth_calc = (((a * b * c) * (a * b * c) * (a * b * c)) / 2);
 
-  printf("a) %.2f\nb) %.2f\nc) %.2f\nd) %.2f\n", first_calc, second_calc, third_calc, fourth_calc);
+  printf("a) %.2f\nb) %.2f\nc) %.2f\nd) %.2f\n", first_calc, second_calc,
+         third_calc, fourth_calc);
 
   return 0;
 }

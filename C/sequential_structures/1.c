@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   int num_input, ancestor, sucessor;
 
   printf("Digite um número inteiro: ");
@@ -10,7 +9,8 @@ int main()
   ancestor = num_input - 1;
   sucessor = num_input + 1;
 
-  printf("O sucessor de %d é %d e seu antecessor é %d\n", num_input, sucessor, ancestor);
+  printf("O sucessor de %d é %d e seu antecessor é %d\n", num_input, sucessor,
+         ancestor);
 
   return 0;
 }

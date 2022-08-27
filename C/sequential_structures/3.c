@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   int x, y, m, n, final_value;
 
   printf("Digite o valores para os seguintes dados\n");
@@ -20,7 +19,8 @@ int main()
 
   final_value = (m * n) - (x * y);
 
-  printf("A diferenca do produto de m e n pelo produto de x e y é %d\n", final_value);
+  printf("A diferenca do produto de m e n pelo produto de x e y é %d\n",
+         final_value);
 
   return 0;
 }

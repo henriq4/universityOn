@@ -8,7 +8,8 @@
     "email": "henriq4NET@gmail.com"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install",
+    "format:c": "just format-c"
   },
   "engines": {
     "pnpm": ">=7"

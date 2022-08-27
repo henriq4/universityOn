@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   int handle_id, handle_worked_hours_in_day, handle_money_per_hour;
   int job_payment;
 
@@ -16,7 +15,8 @@ int main()
 
   job_payment = (handle_money_per_hour * handle_worked_hours_in_day * 30);
 
-  printf("\nO trabalhador de ID %d recebe R$%d,00 por mês\n", handle_id, job_payment);
+  printf("\nO trabalhador de ID %d recebe R$%d,00 por mês\n", handle_id,
+         job_payment);
 
   return 0;
 }

@@ -1,17 +1,14 @@
 #include <stdio.h>
 
-int biggest(int x, int y)
-{
-  if (x > y)
-  {
+int biggest(int x, int y) {
+  if (x > y) {
     return x;
   }
 
   return y;
 }
 
-int main()
-{
+int main() {
   int x, y;
 
   printf("x: ");

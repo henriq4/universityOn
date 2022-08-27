@@ -1,25 +1,21 @@
 #include <stdio.h>
 
-int biggest(int x, int y)
-{
-  if (x > y)
-  {
+int biggest(int x, int y) {
+  if (x > y) {
     return x;
   }
 
   return y;
 }
 
-int calc_biggest_3(int x, int y, int z)
-{
+int calc_biggest_3(int x, int y, int z) {
   int big_x_or_y = biggest(x, y);
   int biggest_num = biggest(big_x_or_y, z);
 
   return biggest_num;
 }
 
-int main()
-{
+int main() {
   int x, y, z;
 
   printf("x: ");

@@ -1,19 +1,16 @@
 #include <stdio.h>
 
-int pow_my(int x, int n)
-{
+int pow_my(int x, int n) {
   int result = 1;
 
-  for (int i = n; i > 0; i--)
-  {
+  for (int i = n; i > 0; i--) {
     result = result * x;
   }
 
   return result;
 }
 
-int main()
-{
+int main() {
   int x, n;
 
   printf("X: valor da base\n");

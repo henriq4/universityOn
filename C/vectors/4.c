@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
   int nums = 0;
   int biggest_num = 0;
 
@@ -10,13 +9,11 @@ int main()
 
   int vec[nums];
 
-  for (int i = 0; i < nums; i++)
-  {
+  for (int i = 0; i < nums; i++) {
     printf("Digite o número %d: ", i);
     scanf("%d", &vec[i]);
 
-    if (vec[i] >= biggest_num)
-    {
+    if (vec[i] >= biggest_num) {
       biggest_num = vec[i];
     }
   }

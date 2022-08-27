@@ -1,12 +1,10 @@
 #include <stdio.h>
 
-float calc_avarage(float test1, float test2, char opt)
-{
+float calc_avarage(float test1, float test2, char opt) {
   float avarage;
   float one = 1;
 
-  switch (opt)
-  {
+  switch (opt) {
   // Aritmética
   case 'a':
     avarage = (test1 + test2) / 2;
@@ -27,8 +25,7 @@ float calc_avarage(float test1, float test2, char opt)
   }
 }
 
-int main()
-{
+int main() {
   float test1, test2;
   char opt;
 
@@ -40,7 +37,8 @@ int main()
   printf("Valor da nota 2: ");
   scanf("%f", &test2);
 
-  printf("Opção: \n a - aritmética \n p - ponderada \n h - harmnônica \nSua opção: ");
+  printf("Opção: \n a - aritmética \n p - ponderada \n h - harmnônica \nSua "
+         "opção: ");
   scanf(" %c", &opt);
 
   avarage = calc_avarage(test1, test2, opt);
