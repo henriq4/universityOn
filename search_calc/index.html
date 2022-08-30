@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-50" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        module.exports = {
+            plugins: [
+            require('@tailwindcss/forms'),
+            ],
+        }
+    </script>
+
+    <title>Formulário UENP</title>
+    <link rel="shortcut icon" href="./static/favicon.png">
+
+</head>
+<body class="h-full">
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+
+
+        <div class="max-w-md w-full space-y-8"> 
+          <div>
+            <img class="mx-auto h-12 w-auto" src="./static/fx.png" alt="Workflow">
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Formulário - Cálculo I</h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+              <a class="font-medium text-indigo-600 hover:text-indigo-500" href="https://github.com/Astronautas-CC">
+                @astronautas-CC
+              </a>
+            </p>
+          </div>
+
+
+          <form class="mt-8 space-y-6" action="https://docs.google.com/forms/d/e/1FAIpQLSdW0z16lJ76dPb4d5NZAt4UmxG4sF6GIemZ-zE3aAxklUK9nA/formResponse" method="POST">
+            <div class="space-y-0.5 rounded-md shadow-sm space-y-2">
+
+              <div>
+                <label for="entry.1164782596" class="sr-only">Idade</label>
+                <input 
+                  id="entry.1164782596" 
+                  name="entry.1164782596" 
+                  required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Idade"
+                >
+              </div>
+
+              <div>
+                <label for="entry.2076115585" class="sr-only">Estado</label>
+                <input 
+                  id="entry.2076115585"
+                  name="entry.2076115585" 
+                  required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Estado"
+                >
+              </div>
+              
+              <div>
+                <label for="entry.1243307991" class="sr-only">Curso</label>
+                <input 
+                  id="entry.1243307991" 
+                  name="entry.1243307991" 
+                  required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Curso"
+                >
+              </div>
+
+              <div>
+                <label for="entry.200521330" class="sr-only">Como foi seu ensino médio?</label>
+                <select
+                required class="rounded-none relative block w-full px-1.5 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                name="entry.200521330" id="entry.200521330">
+                  <option selected>Como foi seu ensino médio?</option>
+                  <option value="Totalmente em escola pública">Totalmente em escola pública</option>
+                  <option value="Totalmente em escola particular">Totalmente em escola particular</option>
+                  <option value="Parcial, entre escola pública e particular">Parcial, entre escola pública e particular</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="entry.1107927239" class="sr-only">Por que você escolheu a Uenp?</label>
+                <input 
+                  id="entry.1107927239" 
+                  name="entry.1107927239" 
+                  required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Por que você escolheu a Uenp?"
+                >
+              </div>
+
+              <div>
+                <label for="entry.661722598" class="sr-only">Qual ano você está cursando?</label>
+                <input 
+                  id="entry.661722598" 
+                  name="entry.661722598" 
+                  required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Qual ano você está cursando? (Digite em números)"
+                >
+              </div>
+
+              <div>
+                <label for="entry.999335220" class="sr-only">Você gosta de esportes coletivos?</label>
+                <input 
+                  id="entry.999335220" 
+                  name="entry.999335220" 
+                  required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Você gosta de esportes coletivos?"
+                >
+              </div>
+
+              <div>
+                <label for="entry.69426716" class="sr-only">Você pratica? Quais?</label>
+                <input 
+                  id="entry.69426716" 
+                  name="entry.69426716" 
+                    required class="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" 
+                  placeholder="Você pratica? Quais?"
+                >
+              </div>
+            </div>
+      
+            <div>
+              <button type="submit" class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>  
+      </div>
+</body>
+</html>

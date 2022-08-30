@@ -1,10 +1,14 @@
 {
+  "material-icon-theme.files.associations": {
+    "justfile": "makefile"
+  },
   "material-icon-theme.folders.associations": {
     "C": "scripts",
     "conditional_structures": "tasks",
     "sequential_structures": "tasks",
     "repetition_structures": "tasks",
     "functions": "tasks",
-    "vectors": "tasks"
+    "vectors": "tasks",
+    "matrix": "tasks"
   }
 }
