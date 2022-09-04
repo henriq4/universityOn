@@ -9,6 +9,7 @@
     "repetition_structures": "tasks",
     "functions": "tasks",
     "vectors": "tasks",
-    "matrix": "tasks"
+    "matrix": "tasks",
+    "strings": "tasks"
   }
 }
