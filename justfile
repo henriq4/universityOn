@@ -1,2 +1,2 @@
 format-c:
-  @clang-format -i ./C/**/*.c
+  @clang-format -i ./apps/C/**/*.c
