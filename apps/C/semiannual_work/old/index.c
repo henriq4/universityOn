@@ -1,3 +1,6 @@
+// Include struct and pointers
+// Include functions
+
 #include <stdio.h>
 
 #define TOTAL_PROD 60
@@ -24,7 +27,6 @@ void main() {
   int total_sell_unity_by_product[TOTAL_PROD];
 
   // Zerando join
-
   for (int a = 0; a < TOTAL_PROD + 1; a++) {
     for (int b = 0; b < TOTAL_FUNC; b++) {
       if (a == 0) {
