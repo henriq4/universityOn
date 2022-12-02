@@ -1,15 +1,20 @@
-// Include struct and pointers
+// Include struct, dynamic allocation and pointers
 // Include functions
 
 #include <stdio.h>
+#include <stdlib.h>
 
-#define TOTAL_PROD 60
+#define TOTAL_PROD 3
 #define TOTAL_FUNC 10
 #define MAX_SELL_PROD 10000
 
 void main() {
   // Matriz que junta os funcionários com o número de produtos vendidos
-  int inner_join_functionary_product[TOTAL_PROD + 1][TOTAL_FUNC];
+  int **inner_join_functionary_product =
+      (int **)malloc((TOTAL_PROD + 1) * sizeof(int *));
+  for (int i = 0; i < TOTAL_PROD + 1; i++) {
+    inner_join_functionary_product[i] = (int *)malloc(TOTAL_FUNC * sizeof(int));
+  }
   // [func1(1), func2(2), func3(3), ...]
   // [prod1(0), prod1(0), prod1(0), ...] (sold quantities)
   // [prod2(0), prod2(0), prod2(0), ...] (sold quantities)
@@ -19,12 +24,14 @@ void main() {
 
   // Valores finais a serem exibidos no 'final do dia'
   float total_sell_reais = 0;
-  float total_sell_reais_by_functionary[TOTAL_FUNC];
-  float total_comissions_reais_by_functionary[TOTAL_FUNC];
+  float *total_sell_reais_by_functionary =
+      (float *)malloc(TOTAL_FUNC * sizeof(float));
+  float *total_comissions_reais_by_functionary =
+      (float *)malloc(TOTAL_FUNC * sizeof(float));
   float biggest_sell_value = 0;
   int biggest_sell_functionary;
   int minor_product_sell_unity = MAX_SELL_PROD;
-  int total_sell_unity_by_product[TOTAL_PROD];
+  int *total_sell_unity_by_product = (int *)malloc(TOTAL_PROD * sizeof(int));
 
   // Zerando join
   for (int a = 0; a < TOTAL_PROD + 1; a++) {
@@ -46,7 +53,7 @@ void main() {
   }
 
   // Atribuindo e printando os preços dos produtos
-  float price_products[TOTAL_PROD];
+  float *price_products = (float *)malloc(TOTAL_PROD * sizeof(float));
   float price_products_swap = 1;
 
   puts("********** Valores dos produtos **********");
@@ -99,7 +106,7 @@ void main() {
     // a venda para
     while (cod_prod_swap != -1) {
 
-      // Verifica se o código do produto está entre 1 e 60
+      // Verifica se o código do produto é válido
       printf(
           "Digite o código do produto vendido (-1 p/ cancelar a venda n°%d): ",
           sell_counter);
@@ -183,22 +190,22 @@ void main() {
   for (int l = 1; l < (TOTAL_PROD + 1); l++) {
     for (int r = 0; r < TOTAL_FUNC; r++) {
       minor_product_sell_unity_sum_swap += inner_join_functionary_product[l][r];
+
+      if (l == 1) {
+        minor_product_sell_unity_sum_currently =
+            minor_product_sell_unity_sum_swap++;
+      }
+
+      if (minor_product_sell_unity_sum_currently <
+          minor_product_sell_unity_sum_swap) {
+        minor_product_sell_unity = l;
+
+        minor_product_sell_unity_sum_currently =
+            minor_product_sell_unity_sum_swap;
+      }
+
+      minor_product_sell_unity_sum_swap = 0;
     }
-
-    if (l == 1) {
-      minor_product_sell_unity_sum_currently =
-          minor_product_sell_unity_sum_swap++;
-    }
-
-    if (minor_product_sell_unity_sum_currently >
-        minor_product_sell_unity_sum_swap) {
-      minor_product_sell_unity = l;
-
-      minor_product_sell_unity_sum_currently =
-          minor_product_sell_unity_sum_swap;
-    }
-
-    minor_product_sell_unity_sum_swap = 0;
   }
   printf("Código do produto que vendeu o menor número de unidades: %d\n",
          minor_product_sell_unity);
@@ -223,7 +230,8 @@ void main() {
   puts("---------------------------");
 
   puts("---------------------------");
-  puts("Tabela final dos dados");
+  puts(
+      "Tabela final dos dados (join de funcionários com os produtos vendidos)");
   for (int a = 0; a < TOTAL_PROD + 1; a++) {
     for (int b = 0; b < TOTAL_FUNC; b++) {
       printf("%d", inner_join_functionary_product[a][b]);
