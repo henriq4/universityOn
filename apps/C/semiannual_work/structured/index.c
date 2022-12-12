@@ -11,8 +11,6 @@
 void reset_mat(int **mat, int r, int c);
 void reset_array(int *array, int size);
 
-void print_products_prices(int *price_products, int size);
-
 void main() {
   // Matriz que junta os funcionários com o número de produtos vendidos
   int **inner_join_functionary_product =
@@ -47,7 +45,23 @@ void main() {
 
   // Atribuindo e printando os preços dos produtos
   float *price_products = (float *)malloc(TOTAL_PROD * sizeof(float));
-  print_products_prices(price_products, TOTAL_PROD);
+  float price_products_swap = 1;
+
+  puts("********** Valores dos produtos **********");
+
+  for (int i = 0; i < TOTAL_PROD; i++) {
+    price_products[i] = price_products_swap;
+
+    price_products_swap += 1;
+
+    printf("Valor do produto de código %d: %.2f", i + 1, price_products[i]);
+
+    if ((i + 1) % 2 == 0) {
+      printf("\n");
+    } else {
+      printf("          ");
+    }
+  }
 
   // Iniciando as vendas durante o dia
   int swap = 0;
@@ -239,25 +253,5 @@ void reset_mat(int **mat, int r, int c) {
 void reset_array(int *array, int size) {
   for (int a = 0; a < size; a++) {
     array[a] = 0;
-  }
-}
-
-void print_products_prices(int *price_products, int size) {
-  float price_products_swap = 1;
-
-  puts("********** Valores dos produtos **********");
-
-  for (int i = 0; i < size; i++) {
-    price_products[i] = price_products_swap;
-
-    price_products_swap += 1;
-
-    printf("Valor do produto de código %d: %.2f", i + 1, price_products[i]);
-
-    if ((i + 1) % 2 == 0) {
-      printf("\n");
-    } else {
-      printf("          ");
-    }
   }
 }
