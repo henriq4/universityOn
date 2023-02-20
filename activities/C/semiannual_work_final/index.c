@@ -33,8 +33,8 @@ int main(int argc, char **argv) {
   greeting(fptr_i, "image.txt");
 
   FILE *fptr;
-  //  createRegister(fptr, filename);
-  readAllRegisters(fptr, filename);
+  createRegister(fptr, filename);
+ readAllRegisters(fptr, filename);
   listOneRegister(fptr, filename);
 
   return 0;
@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
 
 int createRegister(FILE *f, char *filename) {
   struct Game g;
-  f = fopen(filename, "a");
+  f = fopen(filename, "ab");
 
   if (f == NULL) {
     printf("arquivo não pode ser aberto... encerrando\n");
@@ -86,7 +86,7 @@ int createRegister(FILE *f, char *filename) {
 }
 
 int readAllRegisters(FILE *f, char *filename) {
-  f = fopen(filename, "r");
+  f = fopen(filename, "rb");
   struct Game data;
   char read[30];
 
