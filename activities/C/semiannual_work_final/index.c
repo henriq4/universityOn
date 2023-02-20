@@ -14,6 +14,8 @@ struct Game {
 
 int greeting(FILE *f, char *filename);
 
+int verify_register(struct Game data, char *teste, FILE *f);
+
 int createRegister(FILE *f, char *filename);
 int listOneRegister(FILE *f, char *filename);
 int readAllRegisters(FILE *f, char *filename);
@@ -22,7 +24,7 @@ int main(int argc, char **argv) {
   char *filename = argv[1];
 
   if (filename == NULL) {
-    printf("database not provided, exiting...\n");
+    printf("database não foi fornecida... encerrando\n");
 
     return 1;
   }
@@ -31,9 +33,9 @@ int main(int argc, char **argv) {
   greeting(fptr_i, "image.txt");
 
   FILE *fptr;
-  createRegister(fptr, filename);
+  //  createRegister(fptr, filename);
   readAllRegisters(fptr, filename);
-  // listOneRegister(fptr, filename);
+  listOneRegister(fptr, filename);
 
   return 0;
 }
@@ -43,7 +45,7 @@ int createRegister(FILE *f, char *filename) {
   f = fopen(filename, "a");
 
   if (f == NULL) {
-    printf("file cannot be opened for writing, exiting...");
+    printf("arquivo não pode ser aberto... encerrando\n");
 
     return 2;
   }
@@ -89,7 +91,7 @@ int readAllRegisters(FILE *f, char *filename) {
   char read[30];
 
   if (f == NULL) {
-    printf("file cannot be opened for reading, exiting");
+    printf("arquivo nao pode ser aberto... encerrando\n");
 
     return 3;
   }
@@ -98,9 +100,7 @@ int readAllRegisters(FILE *f, char *filename) {
   printf("**** LISTAR TODOS OS JOGOS****\n");
   printf("******************************\n");
 
-  for (int i = 0; i < 10; i++) {
-    fread(&data, sizeof(struct Game), 1, f);
-
+  while (fread(&data, sizeof(struct Game), 1, f)) {
     printf("nome: %s", data.name);
     printf("plataforma: %s", data.platform);
     printf("tipo: %s", data.type);
@@ -111,8 +111,6 @@ int readAllRegisters(FILE *f, char *filename) {
     printf("classificação: %d\n", data.classification);
 
     printf("\n");
-
-    fseek(f, i * sizeof(struct Game), SEEK_SET);
   }
 
   fclose(f);
@@ -122,7 +120,7 @@ int readAllRegisters(FILE *f, char *filename) {
 
 int greeting(FILE *f, char *filename) {
   if ((f = fopen(filename, "r")) == NULL) {
-    fprintf(stderr, "error opening %s\n", filename);
+    fprintf(stderr, "erro ao abrir %s\n", filename);
 
     return 1;
   }
@@ -141,27 +139,50 @@ int greeting(FILE *f, char *filename) {
 
 int listOneRegister(FILE *f, char *filename) {
   f = fopen(filename, "r");
-  char line[sizeof(struct Game)];
+  struct Game data;
 
   char teste[50];
+
+  if (f == NULL) {
+    printf("arquivo não pode ser aberto.. encerrando\n");
+
+    return 4;
+  }
+
+  printf("******************************\n");
+  printf("***** LISTAR UM DOS JOGOS*****\n");
+  printf("******************************\n");
 
   setbuf(stdin, 0);
   printf("Digite o nome que deseja procurar: ");
   fgets(teste, sizeof(teste), stdin);
 
-  if (f == NULL) {
-    printf("file cannot be opened for reading, exiting");
+  int is_register = verify_register(data, teste, f);
 
-    return 4;
-  }
-
-  while (fgets(line, sizeof(struct Game), f) != NULL) {
-    if (!strcmp(line, teste)) {
-      printf("%s", line);
-    }
+  if (!is_register) {
+    printf("registro não encontrado...\n");
   }
 
   fclose(f);
+
+  return 0;
+}
+
+int verify_register(struct Game data, char *teste, FILE *f) {
+  while (fread(&data, sizeof(struct Game), 1, f)) {
+    if (!strcmp(data.name, teste)) {
+      printf("nome: %s", data.name);
+      printf("plataforma: %s", data.platform);
+      printf("tipo: %s", data.type);
+      printf("produtora: %s", data.producer);
+      printf("preço: %f\n", data.price);
+      printf("rating: %f\n", data.rating);
+      printf("ano: %d\n", data.year);
+      printf("classificação: %d\n", data.classification);
+
+      return 1;
+    }
+  }
 
   return 0;
 }
