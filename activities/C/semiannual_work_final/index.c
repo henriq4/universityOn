@@ -21,6 +21,7 @@ int createRegister(FILE *f, char *filename);
 int readOneRegister(FILE *f, char *filename);
 int readAllRegisters(FILE *f, char *filename);
 int modifyOneRegister(FILE *f, char *filename);
+int deleteOneRegister(FILE *f, char *filename);
 
 int main(int argc, char **argv) {
   char *filename = argv[1];
@@ -36,10 +37,12 @@ int main(int argc, char **argv) {
 
   FILE *fptr;
 
-  //  createRegister(fptr, filename);
-  readAllRegisters(fptr, filename);
-  //  readOneRegister(fptr, filename);
-  modifyOneRegister(fptr, filename);
+  // createRegister(fptr, filename);
+  // readAllRegisters(fptr, filename);
+  // readOneRegister(fptr, filename);
+  // modifyOneRegister(fptr, filename);
+  // deleteOneRegister(fptr, filename);
+  // readAllRegisters(fptr, filename);
 
   return 0;
 }
@@ -251,7 +254,7 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
 
     if (!strcmp(data.name, game)) {
       registerCount++;
-      
+
       printf("\nalterando registro [%d]\n\n", registerCount);
 
       printf("Deseja alterar o nome? [1 - yes / 0 - no]: ");
@@ -356,6 +359,79 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
       return 1;
     }
   }
+
+  return 0;
+}
+
+int deleteOneRegister(FILE *f, char *filename) {
+  f = fopen(filename, "rb+");
+
+  remove("swapDatabase.bin");
+  char *swapFilename = "swapDatabase.bin";
+  FILE *swapF = fopen(swapFilename, "ab");
+
+  if (swapF == NULL) {
+    printf("arquivo de troca não pode ser aberto.. encerrando\n");
+
+    return 5;
+  }
+
+  if (f == NULL) {
+    printf("arquivo não pode ser aberto.. encerrando\n");
+
+    return 5;
+  }
+
+  struct Game game;
+  char gameName[sizeof(game.name)];
+
+  printf("******************************\n");
+  printf("**** DELETAR UM DOS JOGOS ****\n");
+  printf("******************************\n");
+
+  setbuf(stdin, 0);
+  printf("Digite o nome que deseja procurar: ");
+  fgets(gameName, sizeof(gameName), stdin);
+
+  int found = 0;
+
+  while (fread(&game, sizeof(struct Game), 1, f)) {
+    if (!strcmp(game.name, gameName)) {
+      found = 1;
+    }
+  }
+
+  if (!found) {
+    printf("registro não encontrado... encerrando\n");
+
+    return 1;
+  }
+
+  int confirmation = 0;
+
+  printf("deseja mesmo remover o registro %s?\n [1 - yes / 0 - no]: ",
+         game.name);
+  scanf("%d", &confirmation);
+
+  if (!confirmation) {
+    printf("registro não removido com sucesso!\n");
+
+    return 0;
+  }
+
+  while (fread(&game, sizeof(struct Game), 1, f)) {
+    if (strcmp(game.name, gameName)) {
+      fwrite(&game, sizeof(struct Game), 1, swapF);
+    }
+  }
+
+  printf("registro removido com sucesso!\n");
+
+  fclose(f);
+  fclose(swapF);
+
+  remove(filename);
+  rename(swapFilename, filename);
 
   return 0;
 }
