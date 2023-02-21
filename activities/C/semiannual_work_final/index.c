@@ -20,6 +20,54 @@ int createRegister(FILE *f, char *filename);
 int listOneRegister(FILE *f, char *filename);
 int readAllRegisters(FILE *f, char *filename);
 
+int modifyOneRegister(FILE *f, char *filename) {
+  f = fopen(filename, "rb+");
+  struct Game data;
+
+  char teste[50];
+  char name[20];
+
+  if (f == NULL) {
+    printf("arquivo não pode ser aberto.. encerrando\n");
+
+    return 5;
+  }
+
+  printf("******************************\n");
+  printf("*** MODIFICAR UM DOS JOGOS ***\n");
+  printf("******************************\n");
+
+  setbuf(stdin, 0);
+  printf("Digite o nome que deseja procurar: ");
+  fgets(teste, sizeof(teste), stdin);
+
+  setbuf(stdin, 0);
+  printf("Digite o novo nome: ");
+  fgets(name, sizeof(name), stdin);
+
+  while (fread(&data, sizeof(struct Game), 1, f)) {
+      long int pos = ftell(f);
+      printf("\n\npos: %ld\n\n", pos);
+
+    if (!strcmp(data.name, teste)) {
+
+      fseek(f, pos - sizeof(struct Game), SEEK_SET);
+
+      for (int i = 0; i < sizeof(data.name); i++) {
+        data.name[i] = name[i];
+      }
+      
+      fwrite(&data, sizeof(struct Game), 1, f);
+
+      printf("\n\nname novo data: %s\n\n", data.name);
+    }
+  }
+
+  fclose(f);
+
+  return 0;
+}
+
 int main(int argc, char **argv) {
   char *filename = argv[1];
 
@@ -33,9 +81,12 @@ int main(int argc, char **argv) {
   greeting(fptr_i, "image.txt");
 
   FILE *fptr;
-  createRegister(fptr, filename);
- readAllRegisters(fptr, filename);
-  listOneRegister(fptr, filename);
+//  createRegister(fptr, filename);
+  readAllRegisters(fptr, filename);
+  //  listOneRegister(fptr, filename);
+  modifyOneRegister(fptr, filename);
+
+  readAllRegisters(fptr, filename);
 
   return 0;
 }
