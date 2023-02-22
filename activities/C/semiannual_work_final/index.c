@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 struct Game {
@@ -23,6 +24,8 @@ int readAllRegisters(FILE *f, char *filename);
 int modifyOneRegister(FILE *f, char *filename);
 int deleteOneRegister(FILE *f, char *filename);
 
+void clearScreen();
+
 int main(int argc, char **argv) {
   char *filename = argv[1];
 
@@ -33,18 +36,92 @@ int main(int argc, char **argv) {
   }
 
   FILE *fptr_i;
-  greeting(fptr_i, "image.txt");
-
   FILE *fptr;
 
-  // createRegister(fptr, filename);
-  // readAllRegisters(fptr, filename);
-  // readOneRegister(fptr, filename);
-  // modifyOneRegister(fptr, filename);
-  // deleteOneRegister(fptr, filename);
-  // readAllRegisters(fptr, filename);
+  int userContinue = 1;
+  int userCreateRegister = 0;
+  int userListAllRegisters = 0;
+  int userListOneRegister = 0;
+  int userUpdateOneRegister = 0;
+  int userDeleteOneRegister = 0;
+
+  while (userContinue != 0) {
+    greeting(fptr_i, "image.txt");
+
+    printf("deseja criar um usuário? [1 - y / 0 - no]: ");
+    scanf("%d", &userCreateRegister);
+
+    if (userCreateRegister) {
+      clearScreen();
+
+      createRegister(fptr, filename);
+    }
+
+    setbuf(stdin, 0);
+    printf("\n");
+
+    printf("deseja listar todos os usuários? [1 - y / 0 - no]: ");
+    scanf("%d", &userListAllRegisters);
+
+    if (userListAllRegisters) {
+      clearScreen();
+
+      readAllRegisters(fptr, filename);
+    }
+
+    setbuf(stdin, 0);
+    printf("\n");
+
+    printf("deseja listar um usuário? [1 - y / 0 - no]: ");
+    scanf("%d", &userListOneRegister);
+
+    if (userListOneRegister) {
+      clearScreen();
+      readOneRegister(fptr, filename);
+    }
+
+    setbuf(stdin, 0);
+    printf("\n");
+
+    printf("deseja atualizar um usuário? [1 - y / 0 - no]: ");
+    scanf("%d", &userUpdateOneRegister);
+
+    if (userUpdateOneRegister) {
+      clearScreen();
+      modifyOneRegister(fptr, filename);
+    }
+
+    setbuf(stdin, 0);
+    printf("\n");
+
+    printf("deseja remover um usuário? [1 - y / 0 - no]: ");
+    scanf("%d", &userDeleteOneRegister);
+
+    if (userDeleteOneRegister) {
+      clearScreen();
+      deleteOneRegister(fptr, filename);
+    }
+
+    setbuf(stdin, 0);
+    printf("\n");
+
+    printf("deseja continuar no programa? [1 - y / 0 - no]: ");
+    scanf("%d", &userContinue);
+
+    clearScreen();
+  }
 
   return 0;
+}
+
+void clearScreen() {
+#ifdef __linux__
+  system("clear");
+#elif _WIN32
+  system("cls");
+#else
+
+#endif
 }
 
 int createRegister(FILE *f, char *filename) {
@@ -59,8 +136,9 @@ int createRegister(FILE *f, char *filename) {
 
   printf("******************************\n");
   printf("*** CADASTRAR UM NOVO JOGO ***\n");
-  printf("******************************\n");
+  printf("******************************\n\n");
 
+  setbuf(stdin, 0);
   printf("nome: ");
   fgets(g.name, sizeof(g.name), stdin);
 
@@ -105,7 +183,7 @@ int readAllRegisters(FILE *f, char *filename) {
 
   printf("******************************\n");
   printf("**** LISTAR TODOS OS JOGOS****\n");
-  printf("******************************\n");
+  printf("******************************\n\n");
 
   while (fread(&data, sizeof(struct Game), 1, f)) {
     printf("nome: %s", data.name);
@@ -158,7 +236,7 @@ int readOneRegister(FILE *f, char *filename) {
 
   printf("******************************\n");
   printf("***** LISTAR UM DOS JOGOS*****\n");
-  printf("******************************\n");
+  printf("******************************\n\n");
 
   setbuf(stdin, 0);
   printf("Digite o nome que deseja procurar: ");
@@ -208,13 +286,11 @@ int modifyOneRegister(FILE *f, char *filename) {
 
   printf("******************************\n");
   printf("*** MODIFICAR UM DOS JOGOS ***\n");
-  printf("******************************\n");
+  printf("******************************\n\n");
 
   setbuf(stdin, 0);
   printf("Digite o nome que deseja procurar: ");
   fgets(gameName, sizeof(gameName), stdin);
-
-  verify_register_to_update(data, gameName, f);
 
   int is_register = verify_register_to_update(data, gameName, f);
 
@@ -255,7 +331,7 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
     if (!strcmp(data.name, game)) {
       registerCount++;
 
-      printf("\nalterando registro [%d]\n\n", registerCount);
+      printf("\nalterando registro [%d]\n", registerCount);
 
       printf("Deseja alterar o nome? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyName);
@@ -270,6 +346,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
         }
       }
 
+      setbuf(stdin, 0);
+      printf("\n");
+
       printf("Deseja alterar a produtora? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyProducer);
 
@@ -282,6 +361,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
           data.producer[i] = newProducer[i];
         }
       }
+
+      setbuf(stdin, 0);
+      printf("\n");
 
       printf("Deseja alterar a plataforma? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyPlataform);
@@ -296,6 +378,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
         }
       }
 
+      setbuf(stdin, 0);
+      printf("\n");
+
       printf("Deseja alterar o tipo? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyType);
 
@@ -309,6 +394,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
         }
       }
 
+      setbuf(stdin, 0);
+      printf("\n");
+
       printf("Deseja alterar o ano? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyYear);
 
@@ -319,6 +407,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
 
         data.year = newYear;
       }
+
+      setbuf(stdin, 0);
+      printf("\n");
 
       printf("Deseja alterar o preço? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyPrice);
@@ -331,6 +422,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
         data.price = newPrice;
       }
 
+      setbuf(stdin, 0);
+      printf("\n");
+
       printf("Deseja alterar a classificação? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyClassification);
 
@@ -341,6 +435,9 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
 
         data.classification = newClassification;
       }
+
+      setbuf(stdin, 0);
+      printf("\n");
 
       printf("Deseja alterar o rating? [1 - yes / 0 - no]: ");
       scanf("%d", &modifyRating);
@@ -355,6 +452,8 @@ int verify_register_to_update(struct Game data, char *game, FILE *f) {
 
       fseek(f, pos - sizeof(struct Game), SEEK_SET);
       fwrite(&data, sizeof(struct Game), 1, f);
+
+      printf("registro alterado com sucesso!\n");
 
       return 1;
     }
@@ -387,7 +486,7 @@ int deleteOneRegister(FILE *f, char *filename) {
 
   printf("******************************\n");
   printf("**** DELETAR UM DOS JOGOS ****\n");
-  printf("******************************\n");
+  printf("******************************\n\n");
 
   setbuf(stdin, 0);
   printf("Digite o nome que deseja procurar: ");
@@ -409,8 +508,7 @@ int deleteOneRegister(FILE *f, char *filename) {
 
   int confirmation = 0;
 
-  printf("deseja mesmo remover o registro %s?\n [1 - yes / 0 - no]: ",
-         game.name);
+  printf("deseja mesmo remover o registro? [1 - yes / 0 - no]: ");
   scanf("%d", &confirmation);
 
   if (!confirmation) {
