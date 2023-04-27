@@ -1,5 +1,3 @@
-package class_1;
-
 class Lamp {
   private boolean state;
 

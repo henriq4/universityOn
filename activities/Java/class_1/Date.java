@@ -1,5 +1,3 @@
-package class_1;
-
 class Date {
   private int day;
   private int month;

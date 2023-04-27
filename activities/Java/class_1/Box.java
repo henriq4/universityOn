@@ -1,5 +1,3 @@
-package class_1;
-
 import java.util.Random;
 
 class Box {
