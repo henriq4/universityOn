@@ -1,15 +1,14 @@
 {
-  "name": "infinit-automata",
+  "name": "finite-automata",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "keywords": [],
   "scripts": {
     "dev": "pnpm build && pnpm start",
     "build": "pnpm tsup index.ts",
     "start": "node ./dist/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Henrique <henriq4net@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.1.0",
