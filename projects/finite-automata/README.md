@@ -12,7 +12,7 @@ $Q = \{q_0, q_1, q_2, q_3\}$
 
 $\Sigma = \{a, b\}$
 
-$\delta = Qx\Sigma \to F$
+$\delta = Qx\Sigma \to Q$
 
 $q_o: q_0$
 
