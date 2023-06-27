@@ -8,34 +8,34 @@ struct List{
 };
 
 // starts/ creates the linked list
-struct List* create_list(){
+List* create_list(){
     return NULL;
 }
 
 // insert a value to the list
-struct List* insert_list(struct List* list, int value){
-    struct List* new = (struct List*) malloc(sizeof(struct List));
+List* insert_list(List* list, int value){
+    List* new = (List*) malloc(sizeof(List));
     new->info = value;
     new->next = list;
     return new;
 }
 
 // print each item of the list
-void print_list(struct List* list){
-    struct List* p;
+void print_list(List* list){
+    List* p;
     for(p = list; p != NULL; p = p->next){
         printf("info =  %d\n", p->info);
     }
 }
 
 // verifies if the list is empty
-int empty_list(struct List* list){
+int empty_list(List* list){
     return (list == NULL);
 }
 
 // search for an element in the list
-struct List* search(struct List* list, int v){
-    struct List* p;
+List* search(List* list, int v){
+    List* p;
     for(p = list; p != NULL; p = p->next){
         if(p->info == v){
             return p;
@@ -45,9 +45,9 @@ struct List* search(struct List* list, int v){
 }
 
 // remove item from the list
-struct List* remove_item(struct List* list, int val){
-    struct List* prev = NULL; //pointer to the previus element;
-    struct List* p = list; // pointer to run thought the list
+List* remove_item(List* list, int val){
+    List* prev = NULL; //pointer to the previus element;
+    List* p = list; // pointer to run thought the list
     // search for the item in the list
     while(p != NULL && p->info != val){
         prev = p;
@@ -71,9 +71,9 @@ struct List* remove_item(struct List* list, int val){
 }
 
 //liberate list
-void liberate_list(struct List* list){
-    struct List* t;
-    struct List* p = list;
+void liberate_list(List* list){
+    List* t;
+    List* p = list;
     while(p != NULL){
         t = p->next; // stores the reference to the next element
         free(p); // free the memory pointed to p
@@ -82,10 +82,10 @@ void liberate_list(struct List* list){
 }
 
 // insert ordenate
-struct List* ordenate_insert(struct List* list, int val){
-    struct List* new;
-    struct List* prev = NULL; // pointer to the previous item
-    struct List* p = list; // pointer to run thought the list
+List* ordenate_insert(List* list, int val){
+    List* new;
+    List* prev = NULL; // pointer to the previous item
+    List* p = list; // pointer to run thought the list
 
     //search the position to insert the item
     while(p != NULL && p->info < val){
@@ -93,7 +93,7 @@ struct List* ordenate_insert(struct List* list, int val){
         p = p->next;
     }
     // create new element
-    new = (struct List*) malloc(sizeof(struct List));
+    new = (List*) malloc(sizeof(List));
     new->info = val;
     //link the new element
     if(prev == NULL){
@@ -108,9 +108,9 @@ struct List* ordenate_insert(struct List* list, int val){
     return list;
 }
 
-int equality_lists(struct List* list1, struct List* list2){
-    struct List* p1; // pointer to run thought the list 1
-    struct List* p2; // pointer to run thought the list 2
+int equality_lists(List* list1, List* list2){
+    List* p1; // pointer to run thought the list 1
+    List* p2; // pointer to run thought the list 2
 
     for(p1 = list1, p2 = list2;
         p1 != NULL && p2 != NULL;
