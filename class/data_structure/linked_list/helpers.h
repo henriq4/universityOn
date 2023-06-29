@@ -3,12 +3,18 @@
 
 typedef struct List List;
 
+// Definindo a estrutura de um nó da lista
+struct List {
+  int value; // valor
+  struct List* next; // referência para próximo nó
+};
+
 List* create_list();
-List* insert_list(List* list, int value);
+List* insert_in_list(List* list, int value);
 void print_list(List* list);
-int empty_list(List* list);
-List* search(List* list, int v);
-List* remove_item(List* list, int val);
-void liberate_list(List* list);
-List* ordenate_insert(List* list, int val);
-int equality_lists(List* list1, List* list2);
+int is_list_empty(List* list);
+List* search_item_in_list(List* list, int v);
+List* remove_item_in_list(List* list, int val);
+void free_list(List* list);
+List* ordeneted_insert_in_list(List* list, int val);
+int is_lists_equals(List* list1, List* list2);

@@ -1,123 +1,123 @@
 #include "helpers.h"
 #include <string.h>
 
-// Define linked list struct
-struct List{
-    int info;
-    struct List* next;
-};
+// Criar uma lista vazia
+List *create_list() { return NULL; }
 
-// starts/ creates the linked list
-List* create_list(){
-    return NULL;
+// Insere um valor dentro da lista
+List *insert_in_list(List *list, int value) {
+  List *new_item = (List *)malloc(sizeof(List));
+
+  new_item->value = value;
+  new_item->next = list;
+
+  return new_item;
 }
 
-// insert a value to the list
-List* insert_list(List* list, int value){
-    List* new = (List*) malloc(sizeof(List));
-    new->info = value;
-    new->next = list;
-    return new;
+// Printa os valores de cada elemento dentro da lista
+void print_list(List *list) {
+  List *l;
+
+  for (l = list; l != NULL; l = l->next) {
+    printf("Value: %d\n", l->value);
+  }
 }
 
-// print each item of the list
-void print_list(List* list){
-    List* p;
-    for(p = list; p != NULL; p = p->next){
-        printf("info =  %d\n", p->info);
+// Verificar se uma lista está vazia
+int is_list_empty(List *list) {
+  if (list == NULL) {
+    return 1;
+  }
+
+  return 0;
+}
+
+// Procurar por um elemento na lista pelo seu valor
+List *search_item_in_list(List *list, int value) {
+  List *l;
+
+  for (l = list; l != NULL; l = l->next) {
+    if (l->value == value) {
+      return l;
     }
-}
+  }
 
-// verifies if the list is empty
-int empty_list(List* list){
-    return (list == NULL);
-}
-
-// search for an element in the list
-List* search(List* list, int v){
-    List* p;
-    for(p = list; p != NULL; p = p->next){
-        if(p->info == v){
-            return p;
-        }
-    }
-    return NULL;
+  return NULL;
 }
 
 // remove item from the list
-List* remove_item(List* list, int val){
-    List* prev = NULL; //pointer to the previus element;
-    List* p = list; // pointer to run thought the list
-    // search for the item in the list
-    while(p != NULL && p->info != val){
-        prev = p;
-        p = p->next;
-    }
-    //verifies if found the item
-    if(p == NULL){
-        return list;
-        // if didnt find, returns the original list
-    }
-    if(prev == NULL){
-        //removes the item in the start of the list
-        list = p->next;
-    }
-    else{
-        // removes the item in the middle of the list
-        prev->next = p->next;
-    }
-    free(p);
+List *remove_item_in_list(List *list, int value) {
+  List *previous = create_list();
+  List *l = list;
+
+  while (l != NULL && l->value != value) {
+    previous = l;
+    l = l->next;
+  }
+
+  if (l == NULL) {
     return list;
+  }
+
+  if (previous == NULL) {
+    list = l->next;
+  } else {
+    previous->next = l->next;
+  }
+
+  free(l);
+  return list;
 }
 
-//liberate list
-void liberate_list(List* list){
-    List* t;
-    List* p = list;
-    while(p != NULL){
-        t = p->next; // stores the reference to the next element
-        free(p); // free the memory pointed to p
-        p = t; // makes p point to the next
-    }
+// Libera item por item da lista
+void free_list(List *list) {
+  List *keeper;
+  List *l = list;
+
+  while (l != NULL) {
+    keeper = l->next;
+    free(l);
+    l = keeper;
+  }
 }
 
-// insert ordenate
-List* ordenate_insert(List* list, int val){
-    List* new;
-    List* prev = NULL; // pointer to the previous item
-    List* p = list; // pointer to run thought the list
+// Insere elemento de forma ordenada
+List *ordeneted_insert_in_list(List *list, int value) {
+  List *new_item;
 
-    //search the position to insert the item
-    while(p != NULL && p->info < val){
-        prev = p;
-        p = p->next;
-    }
-    // create new element
-    new = (List*) malloc(sizeof(List));
-    new->info = val;
-    //link the new element
-    if(prev == NULL){
-        new->next = list;
-        list = new;
-    }
-    else{
-        //insert the element in the middle/ final of the list
-        new->next = prev->next;
-        prev->next = new;
-    }
-    return list;
+  List *previous = create_list();
+  List *l = list;
+
+  while (l != NULL && l->value < value) {
+    previous = l;
+    l = l->next;
+  }
+
+  new_item = (List *)malloc(sizeof(List));
+  new_item->value = value;
+
+  if (previous == NULL) {
+    new_item->next = list;
+    list = new_item;
+  } else {
+    new_item->next = previous->next;
+    previous->next = new_item;
+  }
+
+  return list;
 }
 
-int equality_lists(List* list1, List* list2){
-    List* p1; // pointer to run thought the list 1
-    List* p2; // pointer to run thought the list 2
+// Verifica se duas listas têm seus valores iguais
+int is_lists_equals(List *list1, List *list2) {
+  List *l1;
+  List *l2;
 
-    for(p1 = list1, p2 = list2;
-        p1 != NULL && p2 != NULL;
-        p1 = p1->next, p2 = p2->next){
-            if(p1->info != p2->info){
-                return 0;
-            }
-        }
-    return p1 == p2;
+  for (l1 = list1, l2 = list2; l1 != NULL && l2 != NULL;
+       l1 = l1->next, l2 = l2->next) {
+    if (l1->value == l2->value) {
+      return 1;
+    }
+  }
+
+  return 0;
 }
