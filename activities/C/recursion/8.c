@@ -1,13 +1,13 @@
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <string.h>
 
 bool is_p(char *s, int l, int r) {
-  if(l >= r) {
+  if (l >= r) {
     return true;
   }
 
-  if(s[l] == s[r]) {
+  if (s[l] == s[r]) {
     return is_p(s, l + 1, r - 1);
   }
 
@@ -30,4 +30,3 @@ void main() {
     printf("%s não é um palíndromo\n", n_p);
   }
 }
-

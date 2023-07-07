@@ -22,4 +22,3 @@ void main() {
 
   r_pair(num, 0);
 }
-
