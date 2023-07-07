@@ -1,0 +1,16 @@
+{
+  "name": "non-determinist-finite-automata",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.1",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  }
+}
