@@ -1,5 +1,5 @@
 {
-  "*.{js,ts,tsx}": [
+  "*.{tsx}": [
     "eslint --fix --cache"
   ],
   "*.{json,yml,yaml}": [
