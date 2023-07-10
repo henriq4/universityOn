@@ -2,15 +2,22 @@
   "name": "finite-automata-cli",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "pnpm build && pnpm start",
+    "build": "pnpm tsc",
+    "cli": "pnpm pkg ./dist/index.js",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "@types/node": "^20.4.1",
-    "tsup": "^7.1.0",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "inquirer": "^9.2.7"
   }
 }
