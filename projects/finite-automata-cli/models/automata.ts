@@ -1,4 +1,4 @@
-import { Transitions } from "./transitions.js";
+import { Transitions } from "./transition.js";
 
 export interface Automata {
   initial: number;
