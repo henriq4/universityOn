@@ -31,8 +31,8 @@ export class Automata {
     return -1;
   }
 
-  run(input: string): boolean {
+  run(input: string): 0 | 1 {
     const finalState = this.extendedTransition(this.automata.initial, input);
-    return this.automata.final.has(finalState);
+    return this.automata.final.has(finalState) === true ? 1 : 0;
   }
 }

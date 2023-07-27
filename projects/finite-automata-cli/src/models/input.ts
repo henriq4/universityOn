@@ -9,6 +9,6 @@ export interface AutomataInput {
 }
 
 export interface Input {
-  text: string;
-  expected: boolean;
+  input: string;
+  expected: 0 | 1;
 }

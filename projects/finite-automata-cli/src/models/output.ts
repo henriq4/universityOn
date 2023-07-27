@@ -1,5 +1,6 @@
 export interface Output {
-  text: string;
-  expected: boolean;
+  input: string;
+  expected: 0 | 1;
+  obtained: 0 | 1;
   timeMilliseconds: string;
 }
