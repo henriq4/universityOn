@@ -6,12 +6,12 @@
 /* eslint-disable no-empty */
 import fs from "node:fs";
 
-import { AutomataModel, AutomataInput } from "../models";
+import { AutomataModel, AutomataInput, Input, Output } from "../models";
 import { createStateName } from "../utils/createStateName";
 
 export class AutomataDTO {
   static fromJson(automataPath: string): AutomataModel {
-    const aut: AutomataInput = JSON.parse(
+    const automata: AutomataInput = JSON.parse(
       fs
         .readFileSync(
           "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1.aut",
@@ -24,29 +24,29 @@ export class AutomataDTO {
     const final: Set<number> = new Set();
     const transitions = new Map();
 
-    for (const f in aut.final) {
-      final.add(aut.final[f]);
+    for (const f in automata.final) {
+      final.add(automata.final[f]);
     }
 
-    for (const transition in aut.transitions) {
+    for (const transition in automata.transitions) {
       transitions.set(
         createStateName(
-          aut.transitions[transition].from,
-          aut.transitions[transition].read,
+          automata.transitions[transition].from,
+          automata.transitions[transition].read,
         ),
-        aut.transitions[transition].to,
+        automata.transitions[transition].to,
       );
     }
 
     return {
-      initial: aut.initial,
+      initial: automata.initial,
       final,
       transitions,
     };
   }
 
-  static fromCsv(inputPath: string) {
-    const inputs: any[] = [];
+  static fromCsv(inputPath: string): Input[] {
+    const inputs: Input[] = [];
 
     const inputRaw: string = fs
       .readFileSync(
@@ -61,11 +61,24 @@ export class AutomataDTO {
     for (const line in lines) {
       const [input, expectedStr] = lines[line].split(";");
 
-      const expected = expectedStr.trim() === "1";
+      const expected = expectedStr.trim() === "1" ? 1 : 0;
 
       inputs.push({ input, expected });
     }
 
     return inputs;
+  }
+
+  static generateOutput(outputs: Output[]): void {
+    let content = "";
+
+    for (const output in outputs) {
+      content += `${outputs[output].input};${outputs[output].expected};${outputs[output].obtained};${outputs[output].timeMilliseconds}\n`;
+    }
+
+    fs.writeFileSync(
+      "/home/henriq/code/universityOn/projects/finite-automata-cli/src/output/output.out",
+      content,
+    );
   }
 }
