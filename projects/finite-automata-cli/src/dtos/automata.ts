@@ -44,4 +44,28 @@ export class AutomataDTO {
       transitions,
     };
   }
+
+  static fromCsv(inputPath: string) {
+    const inputs: any[] = [];
+
+    const inputRaw: string = fs
+      .readFileSync(
+        "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1_input.in",
+        // inputPath,
+        "utf-8",
+      )
+      .toString();
+
+    const lines = inputRaw.trim().split("\n");
+
+    for (const line in lines) {
+      const [input, expectedStr] = lines[line].split(";");
+
+      const expected = expectedStr.trim() === "1";
+
+      inputs.push({ input, expected });
+    }
+
+    return inputs;
+  }
 }
