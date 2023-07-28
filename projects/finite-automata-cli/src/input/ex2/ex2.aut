@@ -1,0 +1,16 @@
+{
+  "initial": 0,
+  "final": [2, 3],
+  "transitions": [
+    { "from": 0, "read": "e", "to": 5 },
+    { "from": 0, "read": "a", "to": 5 },
+    { "from": 0, "read": "a", "to": 1 },
+    { "from": 0, "read": "a", "to": 2 },
+    { "from": 0, "read": "e", "to": 3 },
+    { "from": 1, "read": "b", "to": 3 },
+    { "from": 2, "read": "c", "to": 2 },
+    { "from": 3, "read": "d", "to": 5 },
+    { "from": 3, "read": "c", "to": 3 },
+    { "from": 4, "read": "e", "to": 5 }
+  ]
+}
