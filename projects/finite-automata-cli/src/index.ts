@@ -11,7 +11,7 @@ const encoded = process.argv[3];
 const output = process.argv[4];
 
 if (!encoded || !aut || !output) {
-  console.log("any word was informed... exiting");
+  console.log("Uso: automata <automata> <input> <output>");
   process.exit(1);
 }
 
@@ -22,11 +22,13 @@ const outputs: Output[] = [];
 const automata = new Automata(automataInput);
 
 for (const { input, expected } of inputs) {
+  const { obtained, timeMilliseconds } = automata.run(input);
+
   outputs.push({
     input,
     expected,
-    obtained: automata.run(input),
-    timeMilliseconds: "0ms",
+    obtained,
+    timeMilliseconds,
   });
 }
 
