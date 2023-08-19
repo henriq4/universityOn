@@ -3,7 +3,7 @@ export interface AutomataInput {
   final: Array<number>;
   transitions: {
     from: number;
-    read: string;
+    read: string | null;
     to: number;
   }[];
 }
