@@ -2,6 +2,8 @@
 
 Projeto construído durante o segundo período de gradução na Universidade Estadual do Norte do Paraná ([UENP](https://uenp.edu.br/)). O projeto consiste em um simulador de autômatos, com a capacidade de receber, processar e identificar se uma palavra é ou não aceita por um determinado autômato.
 
+https://github.com/henriq4/universityOn/assets/62851165/e2a96d27-cabf-4299-9569-5146e1cdb321
+
 ## Uso
 
 Em breve será disponibilizado um bundle para download multiplataforma.
