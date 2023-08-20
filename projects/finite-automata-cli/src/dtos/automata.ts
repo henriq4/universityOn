@@ -12,16 +12,7 @@ import { createStateName } from "../utils/createStateName";
 export class AutomataDTO {
   static fromJson(automataPath: string): AutomataModel {
     const automata: AutomataInput = JSON.parse(
-      fs
-        .readFileSync(
-          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1.aut",
-          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex2/ex2.aut",
-          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex3/ex3.aut",
-          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex4/ex4.aut",
-          automataPath,
-          "utf-8",
-        )
-        .toString(),
+      fs.readFileSync(automataPath, "utf-8").toString(),
     );
 
     const alphabet: Set<string> = new Set();
@@ -114,16 +105,7 @@ export class AutomataDTO {
   static fromCsv(inputPath: string): Input[] {
     const inputs: Input[] = [];
 
-    const inputRaw: string = fs
-      .readFileSync(
-        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1_input.in",
-        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex2/ex2_input.in",
-        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex3/ex3_input.in",
-        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex4/ex4_input.in",
-        inputPath,
-        "utf-8",
-      )
-      .toString();
+    const inputRaw: string = fs.readFileSync(inputPath, "utf-8").toString();
 
     const lines = inputRaw.trim().split("\n");
 
@@ -138,16 +120,13 @@ export class AutomataDTO {
     return inputs;
   }
 
-  static generateOutput(outputs: Output[]): void {
+  static generateOutput(outputs: Output[], outputPath: string): void {
     let content = "";
 
     for (const output in outputs) {
       content += `${outputs[output].input};${outputs[output].expected};${outputs[output].obtained};${outputs[output].timeMilliseconds}\n`;
     }
 
-    fs.writeFileSync(
-      "/home/henriq/code/universityOn/projects/finite-automata-cli/src/output/output.out",
-      content,
-    );
+    fs.writeFileSync(outputPath, content);
   }
 }

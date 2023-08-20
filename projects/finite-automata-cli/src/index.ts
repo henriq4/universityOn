@@ -32,5 +32,5 @@ for (const { input, expected } of inputs) {
   });
 }
 
-AutomataDTO.generateOutput(outputs);
+AutomataDTO.generateOutput(outputs, output);
 console.table(outputs);
