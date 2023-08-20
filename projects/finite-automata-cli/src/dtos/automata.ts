@@ -1,7 +1,7 @@
+/* eslint-disable no-continue */
 /* eslint-disable eqeqeq */
 /* eslint-disable import-helpers/order-imports */
 /* eslint-disable guard-for-in */
-/* eslint-disable no-console */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-empty */
 import fs from "node:fs";
@@ -14,29 +14,95 @@ export class AutomataDTO {
     const automata: AutomataInput = JSON.parse(
       fs
         .readFileSync(
-          "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1.aut",
-          // automataPath,
+          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1.aut",
+          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex2/ex2.aut",
+          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex3/ex3.aut",
+          // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex4/ex4.aut",
+          automataPath,
           "utf-8",
         )
         .toString(),
     );
 
+    const alphabet: Set<string> = new Set();
+
+    for (const transition in automata.transitions) {
+      if (automata.transitions[transition].read === null) {
+        continue;
+      }
+
+      alphabet.add(automata.transitions[transition].read!);
+    }
+
     const final: Set<number> = new Set();
-    const transitions = new Map();
+    const transitions: Map<string, number[]> = new Map();
+
+    const epsolonTransitions: Map<string, number[]> = new Map();
 
     for (const f in automata.final) {
       final.add(automata.final[f]);
     }
 
-    for (const transition in automata.transitions) {
-      transitions.set(
-        createStateName(
-          automata.transitions[transition].from,
-          automata.transitions[transition].read,
-        ),
-        automata.transitions[transition].to,
-      );
+    function getEpsilonClosure(state: number): number[] {
+      const epsilonStates: number[] = [];
+      const visited: Record<number, boolean> = {};
+      const queue: number[] = [state];
+
+      while (queue.length > 0) {
+        const currentState = queue.shift()!;
+        visited[currentState] = true;
+        epsilonStates.push(currentState);
+
+        const epsilonTransitions = automata.transitions.filter(
+          t => t.from === currentState && t.read === null,
+        );
+        for (const transition of epsilonTransitions) {
+          if (!visited[transition.to]) {
+            queue.push(transition.to);
+            visited[transition.to] = true;
+          }
+        }
+      }
+
+      return epsilonStates;
     }
+
+    for (const transition in automata.transitions) {
+      if (automata.transitions[transition].read === null) {
+        const { from } = automata.transitions[transition];
+        const { to } = automata.transitions[transition];
+
+        console.log(to);
+
+        getEpsilonClosure(from).forEach(state => {
+          if (epsolonTransitions.has(state.toString())) {
+            epsolonTransitions.get(state.toString())!.push(to);
+            return;
+          }
+
+          epsolonTransitions.set(state.toString(), [to]);
+        });
+
+        continue;
+      }
+
+      const state = createStateName(
+        automata.transitions[transition].from,
+        automata.transitions[transition].read!,
+      );
+
+      const { to } = automata.transitions[transition];
+
+      if (transitions.has(state)) {
+        transitions.get(state)!.push(to);
+        continue;
+      }
+
+      transitions.set(state, [to]);
+    }
+
+    console.log("E", epsolonTransitions);
+    console.log("T", transitions);
 
     return {
       initial: automata.initial,
@@ -50,8 +116,11 @@ export class AutomataDTO {
 
     const inputRaw: string = fs
       .readFileSync(
-        "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1_input.in",
-        // inputPath,
+        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex1/ex1_input.in",
+        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex2/ex2_input.in",
+        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex3/ex3_input.in",
+        // "/home/henriq/code/universityOn/projects/finite-automata-cli/src/input/ex4/ex4_input.in",
+        inputPath,
         "utf-8",
       )
       .toString();
