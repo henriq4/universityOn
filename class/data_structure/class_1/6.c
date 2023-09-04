@@ -1,6 +1,6 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 typedef struct Person Person;
 
@@ -17,7 +17,7 @@ int main() {
   scanf("%d", &n);
 
   Person *people;
-  people = (Person*) calloc(n, sizeof(Person));
+  people = (Person *)calloc(n, sizeof(Person));
 
   if (people == NULL) {
     printf("Memória não alocada! encerrando...");

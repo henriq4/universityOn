@@ -1,6 +1,6 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 struct Circle {
   float radius;
@@ -14,7 +14,7 @@ int main() {
   scanf("%d", &n);
 
   struct Circle *circles;
-  circles = (struct Circle*)malloc(n * sizeof(struct Circle));
+  circles = (struct Circle *)malloc(n * sizeof(struct Circle));
 
   if (circles == NULL) {
     printf("Error, memory not allocated! exiting...\n");

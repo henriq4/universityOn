@@ -1,6 +1,6 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 struct Point {
   float x;
@@ -14,7 +14,7 @@ int main() {
   scanf("%d", &n);
 
   struct Point *points;
-  points = (struct Point*) calloc(n, sizeof(struct Point));
+  points = (struct Point *)calloc(n, sizeof(struct Point));
 
   if (points == NULL) {
     printf("Memória não alocada! encerrando...\n");
@@ -44,7 +44,7 @@ int main() {
   float diff;
   float a_diff;
 
-  for (int i = 0; i < n; i ++) {
+  for (int i = 0; i < n; i++) {
     a_diff = fabsf(points_avg - points[i].d);
 
     if (i == 0) {
@@ -63,7 +63,8 @@ int main() {
 
   printf("************************\n\n");
 
-  printf("Ponto mais próximo do ponto médio: (%.2f, %.2f)\n", point_closer.x, point_closer.y);
+  printf("Ponto mais próximo do ponto médio: (%.2f, %.2f)\n", point_closer.x,
+         point_closer.y);
 
   free(points);
 

@@ -14,7 +14,7 @@ int main() {
   scanf("%d", &n);
 
   struct Grade *grades;
-  grades = (struct Grade*) calloc(n, sizeof(struct Grade));
+  grades = (struct Grade *)calloc(n, sizeof(struct Grade));
 
   if (grades == NULL) {
     printf("Memória não alocada! encerrando...\n");
@@ -22,11 +22,11 @@ int main() {
   }
 
   float bigger_avg;
-  
+
   for (int i = 0; i < n; i++) {
     printf("Prova %d, aluno %d: ", i + 1, i + 1);
     scanf("%f", &(grades + i)->g1);
-    
+
     printf("Prova %d, aluno %d: ", i + 2, i + 1);
     scanf("%f", &(grades + i)->g2);
 

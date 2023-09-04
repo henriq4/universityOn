@@ -8,10 +8,10 @@ int main() {
 
   int col = n;
   int row = n;
-  
+
   int **m;
 
-  m = (int**) calloc(row, sizeof(int*));
+  m = (int **)calloc(row, sizeof(int *));
   for (int i = 0; i < row; i++) {
     m[i] = calloc(col, sizeof(int));
   }
@@ -40,7 +40,7 @@ int main() {
         minor_d = m[i][j];
       }
 
-       if (m[i][j] > big_d) {
+      if (m[i][j] > big_d) {
         big_d = m[i][j];
       }
     }

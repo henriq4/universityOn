@@ -1,6 +1,6 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 int main() {
   int n;
@@ -8,7 +8,7 @@ int main() {
   scanf("%d", &n);
 
   float *p;
-  p = (float*) malloc(n * sizeof(float));
+  p = (float *)malloc(n * sizeof(float));
 
   if (p == NULL) {
     printf("Memória não alocada! encerrando...\n");
@@ -22,7 +22,7 @@ int main() {
     scanf("%f", &p[i]);
 
     avg += p[i];
-  }  
+  }
 
   avg /= n;
 

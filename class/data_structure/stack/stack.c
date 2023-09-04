@@ -1,7 +1,7 @@
 #include "helpers.h"
 
-Stack* create_stack() {
-  Stack* s = (Stack*) malloc(sizeof(Stack));
+Stack *create_stack() {
+  Stack *s = (Stack *)malloc(sizeof(Stack));
 
   if (!s) {
     perror(NULL);
@@ -13,7 +13,7 @@ Stack* create_stack() {
   return s;
 }
 
-void stack_up(Stack* s, int e) {
+void stack_up(Stack *s, int e) {
   if (MAX_ELEMENTS == s->top_element) {
     puts("Stack's full");
     exit(1);
@@ -23,7 +23,7 @@ void stack_up(Stack* s, int e) {
   s->top_element++;
 }
 
-void unstack(Stack* s) {
+void unstack(Stack *s) {
   if (s->top_element == 0) {
     puts("Stack's already empty");
     exit(1);
@@ -32,10 +32,6 @@ void unstack(Stack* s) {
   s->top_element--;
 }
 
-int stack_length(Stack* s) {
-  return s->top_element;
-}
+int stack_length(Stack *s) { return s->top_element; }
 
-void free_stack(Stack* s) {
-  free(s);
-}
+void free_stack(Stack *s) { free(s); }

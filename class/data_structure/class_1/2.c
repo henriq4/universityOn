@@ -13,7 +13,7 @@ int main() {
   scanf("%d", &n);
 
   struct Object *objects;
-  objects = (struct Object*) calloc(n, sizeof(struct Object));
+  objects = (struct Object *)calloc(n, sizeof(struct Object));
 
   if (objects == NULL) {
     printf("Memória não alocada! encerrando...\n");
