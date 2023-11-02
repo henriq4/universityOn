@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-  public class Jpa implements Serializable {
+  public class Jpa {
     private static final EntityManagerFactory factory;
     static {
       factory = Persistence.createEntityManagerFactory("com.henriquegc.vehiclemanager");
