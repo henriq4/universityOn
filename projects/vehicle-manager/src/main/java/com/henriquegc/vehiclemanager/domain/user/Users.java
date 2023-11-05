@@ -14,7 +14,7 @@ public class Users {
   @Column
   private String address;
 
-  @Column
+  @Column(unique = true)
   private String login;
 
   @Column
