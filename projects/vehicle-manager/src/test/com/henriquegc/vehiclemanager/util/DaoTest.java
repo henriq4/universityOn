@@ -9,7 +9,7 @@ class DaoTest {
 
   @Test
   void inserir() {
-    Users user = new Users(10,"Henrqiue", "Bandeirantes/PR", "henrique", "1234");
+    Users user = new Users("Henrique", "Rua 1", "henrique", "123");
 
     Dao<Users> dao = new Dao<Users>(Users.class);
     dao.inserir(user);

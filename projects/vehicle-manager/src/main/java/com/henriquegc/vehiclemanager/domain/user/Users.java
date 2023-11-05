@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Users {
   @Id
-  private int id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private String id;
 
   @Column
   private String name;
@@ -21,8 +22,7 @@ public class Users {
 
   public Users() {}
 
-  public Users(int id, String name, String address, String login, String password) {
-    this.id = id;
+  public Users(String name, String address, String login, String password) {
     this.name = name;
     this.address = address;
     this.login = login;
