@@ -1,9 +1,15 @@
-open module com.henriquegc.vehiclemanager {
-  requires javafx.controls;
-  requires javafx.fxml;
-  requires java.persistence;
-  requires org.hibernate.orm.core;
-  requires org.postgresql.jdbc;
+module app {
+    requires javafx.controls;
+    requires javafx.fxml;
+    
+    requires java.persistence;
+    requires org.hibernate.orm.core;
+    requires org.postgresql.jdbc;
 
-  exports com.henriquegc.vehiclemanager;
+    opens app to javafx.fxml;
+ 
+    exports app;
+    exports util;
 }
+
+
