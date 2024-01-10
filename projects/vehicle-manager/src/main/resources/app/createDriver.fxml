@@ -14,9 +14,9 @@
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
-                <Menu mnemonicParsing="false" onAction="#voltarAoMenu" text="Menu">
+                <Menu mnemonicParsing="false" onAction="#goToMenu" text="Menu">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#voltarAoMenu" text="Menu" />
+                        <MenuItem mnemonicParsing="false" onAction="#goToMenu" text="Menu" />
                     </items>
                 </Menu>
             </menus>
@@ -34,13 +34,13 @@
                 <Label layoutX="124.0" layoutY="188.0" text="CNH (nº)" />
                 <Label layoutX="124.0" layoutY="226.0" text="Categoria" />
                 <Label layoutX="124.0" layoutY="268.0" text="Setor" />
-                <TextField fx:id="campoNome" layoutX="193.0" layoutY="97.0" prefHeight="26.0" prefWidth="253.0" />
-                <TextField fx:id="campoEndereco" layoutX="193.0" layoutY="143.0" prefHeight="26.0" prefWidth="254.0" />
-                <TextField fx:id="campoCnh" layoutX="193.0" layoutY="184.0" prefHeight="26.0" prefWidth="254.0" />
-                <TextField fx:id="campoCategoria" layoutX="193.0" layoutY="222.0" prefHeight="26.0" prefWidth="254.0" />
-                <TextField fx:id="campoSetor" layoutX="193.0" layoutY="264.0" prefHeight="26.0" prefWidth="254.0" />
-                <Button fx:id="botaoCancelar" layoutX="229.0" layoutY="313.0" mnemonicParsing="false" onAction="#voltarAoMenu" text="Cancelar" />
-                <Button fx:id="botaoGravar" layoutX="329.0" layoutY="313.0" mnemonicParsing="false" onAction="#cadastrarMotorista" prefHeight="26.0" prefWidth="62.0" text="Gravar" />
+                <TextField fx:id="name" layoutX="193.0" layoutY="97.0" prefHeight="26.0" prefWidth="253.0" />
+                <TextField fx:id="address" layoutX="193.0" layoutY="143.0" prefHeight="26.0" prefWidth="254.0" />
+                <TextField fx:id="cnh" layoutX="193.0" layoutY="184.0" prefHeight="26.0" prefWidth="254.0" />
+                <TextField fx:id="category" layoutX="193.0" layoutY="222.0" prefHeight="26.0" prefWidth="254.0" />
+                <TextField fx:id="section" layoutX="193.0" layoutY="264.0" prefHeight="26.0" prefWidth="254.0" />
+                <Button fx:id="cancelBtn" layoutX="229.0" layoutY="313.0" mnemonicParsing="false" onAction="#goToMenu" text="Cancelar" />
+                <Button fx:id="createBtn" layoutX="329.0" layoutY="313.0" mnemonicParsing="false" onAction="#createDriver" prefHeight="26.0" prefWidth="62.0" text="Gravar" />
             </children>
         </AnchorPane>
     </children>

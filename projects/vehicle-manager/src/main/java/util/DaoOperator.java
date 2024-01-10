@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 public class DaoOperator implements Serializable{
     EntityManager manager;
 
-    public Operator autenticar(String login, String password) {
+    public Operator login(String login, String password) {
         Operator temp = null;
         try {
           manager = JpaUtil.getEntityManager();
@@ -27,7 +27,7 @@ public class DaoOperator implements Serializable{
         return temp;
     }
 
-    public boolean jaExiste(String login) {
+    public boolean alreadyExists(String login) {
         Operator temp = null;
         boolean existe = false;
         manager = JpaUtil.getEntityManager();

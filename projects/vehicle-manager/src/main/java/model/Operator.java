@@ -22,8 +22,8 @@ public class Operator extends Person implements Serializable, Persistivel {
     public Operator() {
     }
 
-    public Operator(String nome, String address, String login, String password) {
-        super(nome, address);
+    public Operator(String name, String address, String login, String password) {
+        super(name, address);
         this.login = login;
         this.password = password;
     }

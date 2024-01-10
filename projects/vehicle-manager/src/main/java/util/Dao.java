@@ -11,36 +11,36 @@ import javax.persistence.criteria.CriteriaQuery;
 
 public class Dao<T extends Persistivel> {
 
-    private final Class<T> classe;
+    private final Class<T> objClass;
     EntityManager manager;
 
-    public Dao(Class<T> classe) {
-        this.classe = classe;
+    public Dao(Class<T> objClass) {
+        this.objClass = objClass;
     }
 
-    public T alterar(T objeto) {
+    public T update(T obj) {
         manager = JpaUtil.getEntityManager();
         manager.getTransaction().begin();
-        objeto = manager.merge(objeto);
+        obj = manager.merge(obj);
         manager.getTransaction().commit();
         manager.close();
-        return objeto;
+        return obj;
     }
 
-    public T buscarPorCodigo(Object id) {
-        T objeto;
+    public T getById(Object id) {
+        T obj;
         manager = JpaUtil.getEntityManager();
-        objeto = manager.find(classe, id);
+        obj = manager.find(objClass, id);
         manager.close();
-        return objeto;
+        return obj;
     }
 
-    public void excluir(T objeto) throws DeleteException {
+    public void delete(T obj) throws DeleteException {
         manager = JpaUtil.getEntityManager();
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
         try {
-            T temp = manager.find(classe, objeto.getId());
+            T temp = manager.find(objClass, obj.getId());
             manager.remove(temp);
             tx.commit();
         } catch (Exception e) {
@@ -50,19 +50,19 @@ public class Dao<T extends Persistivel> {
         }
     }
 
-    public void inserir(T objeto) {
+    public void insert(T obj) {
         manager = JpaUtil.getEntityManager();
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
-        manager.persist(objeto);
+        manager.persist(obj);
         tx.commit();
     }
 
-    public List<T> listarTodos() {
+    public List<T> getAll() {
         manager = JpaUtil.getEntityManager();
         CriteriaQuery<T> query
-                = manager.getCriteriaBuilder().createQuery(classe);
-        query.select(query.from(classe));
+                = manager.getCriteriaBuilder().createQuery(objClass);
+        query.select(query.from(objClass));
         List<T> lista = manager.createQuery(query).getResultList();
         manager.close();
         return lista;

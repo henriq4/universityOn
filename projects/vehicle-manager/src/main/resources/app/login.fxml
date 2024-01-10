@@ -19,9 +19,9 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="campoLogin" layoutX="232.0" layoutY="135.0" />
-            <PasswordField fx:id="campoSenha" layoutX="231.0" layoutY="187.0" />
-            <Button layoutX="283.0" layoutY="243.0" mnemonicParsing="false" onAction="#autenticar" text="Entrar" />
+            <TextField fx:id="login" layoutX="232.0" layoutY="135.0" />
+            <PasswordField fx:id="password" layoutX="231.0" layoutY="187.0" />
+            <Button layoutX="283.0" layoutY="243.0" mnemonicParsing="false" onAction="#login" text="Entrar" />
          </children>
     </AnchorPane>
   </children>

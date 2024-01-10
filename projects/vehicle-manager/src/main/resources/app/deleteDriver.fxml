@@ -29,9 +29,9 @@
                </font>
             </Label>
             <Label layoutX="116.0" layoutY="144.0" text="Selecione o motorista" />
-            <Button layoutX="247.0" layoutY="210.0" mnemonicParsing="false" onAction="#voltarAoMenu" prefHeight="26.0" prefWidth="83.0" text="Cancelar" />
-            <Button layoutX="385.0" layoutY="210.0" mnemonicParsing="false" onAction="#excluirMotorista" prefHeight="26.0" prefWidth="83.0" text="Excluir" />
-            <ComboBox fx:id="comboMotoristas" layoutX="247.0" layoutY="139.0" prefHeight="26.0" prefWidth="222.0" />
+            <Button layoutX="247.0" layoutY="210.0" mnemonicParsing="false" onAction="#goToMenu" prefHeight="26.0" prefWidth="83.0" text="Cancelar" />
+            <Button layoutX="385.0" layoutY="210.0" mnemonicParsing="false" onAction="#deleteDriver" prefHeight="26.0" prefWidth="83.0" text="Excluir" />
+            <ComboBox fx:id="drivers" layoutX="247.0" layoutY="139.0" prefHeight="26.0" prefWidth="222.0" />
          </children>
     </AnchorPane>
   </children>

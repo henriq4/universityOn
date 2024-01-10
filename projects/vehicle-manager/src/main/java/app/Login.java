@@ -13,15 +13,16 @@ import util.DaoOperator;
 public class Login {
 
     @FXML
-    private TextField campoLogin;
+    private TextField login;
 
     @FXML
-    private TextField campoSenha;
+    private TextField password;
 
     @FXML
-    private void autenticar() throws IOException {
+    private void login() throws IOException {
         DaoOperator dao = new DaoOperator();
-        Operator temp = dao.autenticar(campoLogin.getText(), campoSenha.getText());
+        Operator temp = dao.login(login.getText(), password.getText());
+
         if (temp == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Login ou senha inválidos");

@@ -21,16 +21,16 @@ public class Driver extends Person implements Serializable, Persistivel {
   private String category;
 
   @Column(length = 15)
-  private String setor;
+  private String section;
 
   public Driver() {
   }
 
-  public Driver(Long cnh, String category, String setor, String nome, String endereco) {
-    super(nome, endereco);
+  public Driver(Long cnh, String category, String section, String name, String address) {
+    super(name, address);
     this.cnh = cnh;
     this.category = category;
-    this.setor = setor;
+    this.section = section;
   }
 
   public Long getCnh() {
@@ -49,12 +49,12 @@ public class Driver extends Person implements Serializable, Persistivel {
     this.category = category;
   }
 
-  public String getSetor() {
-    return setor;
+  public String getSection() {
+    return section;
   }
 
-  public void setSetor(String setor) {
-    this.setor = setor;
+  public void setSection(String section) {
+    this.section = section;
   }
 
   @Override

@@ -12,7 +12,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="Operadores">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#cadastrarOperador" text="Novo" />
+            <MenuItem mnemonicParsing="false" onAction="#createDriver" text="Novo" />
             <MenuItem mnemonicParsing="false" text="Editar" />
             <MenuItem mnemonicParsing="false" text="Excluir" />
             <MenuItem mnemonicParsing="false" text="Listar" />
@@ -20,9 +20,9 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Motoristas">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#cadastrarMotorista" text="Novo" />
+            <MenuItem mnemonicParsing="false" onAction="#createDriver" text="Novo" />
             <MenuItem mnemonicParsing="false" text="Editar" />
-            <MenuItem mnemonicParsing="false" onAction="#excluirMotorista" text="Excluir" />
+            <MenuItem mnemonicParsing="false" onAction="#deleteDriver" text="Excluir" />
             <MenuItem mnemonicParsing="false" text="Listar" />
           </items>
         </Menu>
@@ -36,14 +36,14 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Registros">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#retirarVeiculo" text="Retirada" />
+            <MenuItem mnemonicParsing="false" onAction="#withdrawVehicle" text="Retirada" />
             <MenuItem mnemonicParsing="false" text="Devolução" />
             <MenuItem mnemonicParsing="false" text="Busca" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" onAction="#sair" text="Sair">
+        <Menu mnemonicParsing="false" onAction="#exit" text="Sair">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#sair" text="Sair" />
+            <MenuItem mnemonicParsing="false" onAction="#exit" text="Sair" />
           </items>
         </Menu>
       </menus>

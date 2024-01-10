@@ -12,48 +12,52 @@ import util.Dao;
 
 public class CreateDriver {
     @FXML
-    private TextField campoNome;
+    private TextField name;
 
     @FXML
-    private TextField campoEndereco;
+    private TextField address;
 
     @FXML
-    private TextField campoCnh;
+    private TextField cnh;
 
     @FXML
-    private TextField campoCategoria;
+    private TextField category;
 
     @FXML
-    private TextField campoSetor;
+    private TextField section;
 
 
     @FXML
-    private void cadastrarMotorista(){
-        Driver motorista = new Driver();
-        motorista.setName(campoNome.getText());
-        motorista.setAddress(campoEndereco.getText());
-        motorista.setCnh(Long.valueOf(campoCnh.getText()));
-        motorista.setCategory(campoCategoria.getText());
-        motorista.setSetor(campoSetor.getText());
+    private void createDriver(){
+        Driver driver = new Driver();
+
+        driver.setName(name.getText());
+        driver.setAddress(address.getText());
+        driver.setCnh(Long.valueOf(cnh.getText()));
+        driver.setCategory(category.getText());
+        driver.setSection(section.getText());
+
         Dao<Driver> dao = new Dao(Driver.class);
-        dao.inserir(motorista);
-        limparCampos();
+        dao.insert(driver);
+
+        cleanInputs();
+
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText("Motorista cadastrado");
         alert.show();
     }
 
     @FXML
-    private void limparCampos(){
-        campoNome.setText("");
-        campoEndereco.setText("");
-        campoCnh.setText("");
-        campoCategoria.setText("");
-        campoSetor.setText("");
+    private void cleanInputs(){
+        name.setText("");
+        address.setText("");
+        cnh.setText("");
+        category.setText("");
+        section.setText("");
     }
 
     @FXML
-    private void voltarAoMenu() throws IOException{
+    private void goToMenu() throws IOException{
         App.setRoot("menu");
     }
 

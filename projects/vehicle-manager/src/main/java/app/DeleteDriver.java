@@ -16,39 +16,40 @@ import util.Dao;
 public class DeleteDriver {
 
     @FXML
-    private ComboBox<Driver> comboMotoristas;
+    private ComboBox<Driver> drivers;
 
-    private ObservableList<Driver> listaOb;
-    private List<Driver> lista;
+    private ObservableList<Driver> getDriversObservable;
+    private List<Driver> getDrivers;
+
     private Dao<Driver> dao;
 
     @FXML
     private void initialize() {
         dao = new Dao(Driver.class);
-        lista = dao.listarTodos();
-        listaOb = FXCollections.observableArrayList(lista);
-        comboMotoristas.setItems(listaOb);
+        getDrivers = dao.getAll();
+        getDriversObservable = FXCollections.observableArrayList(getDrivers);
+        drivers.setItems(getDriversObservable);
     }
 
     @FXML
-    private void excluirMotorista() {
-        Driver temp = comboMotoristas.getSelectionModel().getSelectedItem();
+    private void deleteDriver() {
+        Driver temp = drivers.getSelectionModel().getSelectedItem();
 
         try {
-          dao.excluir(temp);
+          dao.delete(temp);
         } catch (DeleteException e) {
           Alert alert = new Alert(Alert.AlertType.ERROR);
           alert.setContentText("Não foi possível excluir o motorista");
           alert.show();
         }
-        // atualiza a lista
-        lista = dao.listarTodos();
-        listaOb = FXCollections.observableArrayList(lista);
-        comboMotoristas.setItems(listaOb);
+
+        getDrivers = dao.getAll();
+        getDriversObservable = FXCollections.observableArrayList(getDrivers);
+        drivers.setItems(getDriversObservable);
     }
 
     @FXML
-    private void voltarAoMenu() throws IOException {
+    private void goToMenu() throws IOException {
         App.setRoot("menu");
     }
 
