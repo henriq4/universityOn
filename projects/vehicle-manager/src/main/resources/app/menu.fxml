@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.Menu">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Operadores">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#cadastrarOperador" text="Novo" />
+            <MenuItem mnemonicParsing="false" text="Editar" />
+            <MenuItem mnemonicParsing="false" text="Excluir" />
+            <MenuItem mnemonicParsing="false" text="Listar" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Motoristas">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#cadastrarMotorista" text="Novo" />
+            <MenuItem mnemonicParsing="false" text="Editar" />
+            <MenuItem mnemonicParsing="false" onAction="#excluirMotorista" text="Excluir" />
+            <MenuItem mnemonicParsing="false" text="Listar" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Veículos">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Novo" />
+            <MenuItem mnemonicParsing="false" text="Editar" />
+            <MenuItem mnemonicParsing="false" text="Excluir" />
+            <MenuItem mnemonicParsing="false" text="Listar" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Registros">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#retirarVeiculo" text="Retirada" />
+            <MenuItem mnemonicParsing="false" text="Devolução" />
+            <MenuItem mnemonicParsing="false" text="Busca" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" onAction="#sair" text="Sair">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#sair" text="Sair" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
+  </children>
+</VBox>
