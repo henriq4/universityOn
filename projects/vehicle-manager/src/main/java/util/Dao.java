@@ -1,11 +1,15 @@
 package util;
 
+import exception.DeleteException;
+import model.Operator;
+
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
-public class Dao<T> {
+public class Dao<T extends Persistivel> {
 
     private final Class<T> classe;
     EntityManager manager;
@@ -31,14 +35,19 @@ public class Dao<T> {
         return objeto;
     }
 
-    public void excluir(Integer id) {
+    public void excluir(T objeto) throws DeleteException {
         manager = JpaUtil.getEntityManager();
         EntityTransaction tx = manager.getTransaction();
         tx.begin();
-        T temp = manager.find(classe, id);
-        manager.remove(temp);
-        tx.commit();
-        manager.close();
+        try {
+            T temp = manager.find(classe, objeto.getId());
+            manager.remove(temp);
+            tx.commit();
+        } catch (Exception e) {
+            throw new DeleteException();
+        } finally {
+            manager.close();
+        }
     }
 
     public void inserir(T objeto) {
