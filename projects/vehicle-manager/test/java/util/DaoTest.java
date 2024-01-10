@@ -1,17 +1,12 @@
 package util;
 
-import domain.Vaca;
+import model.Operator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import util.Dao;
 
-/**
- *
- * @author Usuário
- */
 public class DaoTest {
 
     public DaoTest() {
@@ -35,11 +30,13 @@ public class DaoTest {
 
     @Test
     public void testInserir(){
-        Vaca vaca = new Vaca();
-        vaca.setName("Lili");
-        vaca.setRaca("Jersey");
-        Dao<Vaca> dao = new Dao(Vaca.class);
-        dao.inserir(vaca);
+        Operator operator = new Operator();
+        operator.setName("Teste");
+        operator.setAddress("Teste");
+        operator.setLogin("teste");
+        operator.setPassword("teste");
+        Dao<Operator> dao = new Dao(Operator.class);
+        dao.inserir(operator);
     }
 
 }

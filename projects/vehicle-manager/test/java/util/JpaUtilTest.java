@@ -7,10 +7,10 @@ import javax.persistence.EntityManager;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class JpaUtilTest {
-    
+
     public JpaUtilTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
@@ -26,11 +26,11 @@ public class JpaUtilTest {
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
     public void testConnection(){
-//        EntityManager em = JpaUtil.getEntityManager();
-//        assertNotNull(em);
+        EntityManager em = JpaUtil.getEntityManager();
+        assertNotNull(em);
     }
 
     @Test
