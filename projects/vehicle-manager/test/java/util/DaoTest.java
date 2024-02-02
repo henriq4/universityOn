@@ -36,7 +36,6 @@ public class DaoTest {
         operator.setLogin("teste");
         operator.setPassword("teste");
         Dao<Operator> dao = new Dao(Operator.class);
-        dao.inserir(operator);
+        dao.insert(operator);
     }
-
 }

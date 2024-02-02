@@ -24,6 +24,7 @@
         <Menu mnemonicParsing="false" text="Veículos">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#createVehicle" text="Novo" />
+            <MenuItem mnemonicParsing="false" onAction="#listVehicles" text="Listar" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Registros">

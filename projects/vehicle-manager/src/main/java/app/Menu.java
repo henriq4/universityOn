@@ -34,6 +34,11 @@ public class Menu {
         App.setRoot("withdrawVehicle");
     }
 
+  @FXML
+  private void listVehicles() throws IOException {
+    App.setRoot("listVehicles");
+  }
+
     @FXML
     private void exit(){
         Platform.exit();
