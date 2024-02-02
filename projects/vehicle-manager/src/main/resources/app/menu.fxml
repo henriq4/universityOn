@@ -18,6 +18,7 @@
         <Menu mnemonicParsing="false" text="Motoristas">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#createDriver" text="Novo" />
+            <MenuItem mnemonicParsing="false" onAction="#listDrivers" text="Listar" />
             <MenuItem mnemonicParsing="false" onAction="#deleteDriver" text="Excluir" />
           </items>
         </Menu>

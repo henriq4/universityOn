@@ -39,6 +39,11 @@ public class Menu {
     App.setRoot("listVehicles");
   }
 
+  @FXML
+  private void listDrivers() throws IOException {
+    App.setRoot("listDrivers");
+  }
+
     @FXML
     private void exit(){
         Platform.exit();
