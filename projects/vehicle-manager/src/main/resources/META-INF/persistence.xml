@@ -5,10 +5,10 @@
 
     <persistence-unit name="vehicles" transaction-type="RESOURCE_LOCAL">
         <class>model.Driver</class>
-    <class>model.Operator</class>
-    <class>model.Person</class>
-    <class>model.Vehicle</class>
-    <class>model.VehicleUse</class>
+        <class>model.Operator</class>
+        <class>model.Person</class>
+        <class>model.Vehicle</class>
+        <class>model.VehicleUse</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url"

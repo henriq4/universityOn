@@ -20,6 +20,16 @@ public class Menu {
     }
 
     @FXML
+    private void createVehicle() throws IOException{
+        App.setRoot("createVehicle");
+    }
+
+    @FXML
+    private void createOperator() throws IOException{
+        App.setRoot("createOperator");
+    }
+
+    @FXML
     private void withdrawVehicle() throws IOException{
         App.setRoot("withdrawVehicle");
     }

@@ -10,28 +10,20 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Operadores">
+        <Menu mnemonicParsing="false" text="Operadores Sistema">
           <items>
-            <MenuItem mnemonicParsing="false" onAction="#createDriver" text="Novo" />
-            <MenuItem mnemonicParsing="false" text="Editar" />
-            <MenuItem mnemonicParsing="false" text="Excluir" />
-            <MenuItem mnemonicParsing="false" text="Listar" />
+            <MenuItem mnemonicParsing="false" onAction="#createOperator" text="Novo" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Motoristas">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#createDriver" text="Novo" />
-            <MenuItem mnemonicParsing="false" text="Editar" />
             <MenuItem mnemonicParsing="false" onAction="#deleteDriver" text="Excluir" />
-            <MenuItem mnemonicParsing="false" text="Listar" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Veículos">
           <items>
-            <MenuItem mnemonicParsing="false" text="Novo" />
-            <MenuItem mnemonicParsing="false" text="Editar" />
-            <MenuItem mnemonicParsing="false" text="Excluir" />
-            <MenuItem mnemonicParsing="false" text="Listar" />
+            <MenuItem mnemonicParsing="false" onAction="#createVehicle" text="Novo" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Registros">
