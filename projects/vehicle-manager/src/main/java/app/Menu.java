@@ -44,10 +44,14 @@ public class Menu {
     App.setRoot("listDrivers");
   }
 
-
   @FXML
   private void listWithdraws() throws IOException {
     App.setRoot("listWithdraws");
+  }
+
+  @FXML
+  private void withdrawDevolution() throws IOException {
+    App.setRoot("withdrawDevolution");
   }
 
     @FXML
