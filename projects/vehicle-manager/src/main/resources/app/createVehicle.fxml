@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CreateVehicle">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" onAction="#goToMenu" text="Menu">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#goToMenu" text="Menu" />
+                    </items>
+                </Menu>
+            </menus>
+
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label layoutX="255.0" layoutY="45.0" text="Novo Veículo">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="124.0" layoutY="101.0" text="Marca" />
+                <Label layoutX="124.0" layoutY="147.0" text="Modelo" />
+                <Label layoutX="124.0" layoutY="188.0" text="Placa" />
+                <TextField fx:id="brand" layoutX="193.0" layoutY="97.0" prefHeight="26.0" prefWidth="253.0" />
+                <TextField fx:id="model" layoutX="193.0" layoutY="143.0" prefHeight="26.0" prefWidth="254.0" />
+                <TextField fx:id="plate" layoutX="193.0" layoutY="184.0" prefHeight="26.0" prefWidth="254.0" />
+                <Button fx:id="cancelBtn" layoutX="229.0" layoutY="313.0" mnemonicParsing="false" onAction="#goToMenu" text="Cancelar" />
+                <Button fx:id="createBtn" layoutX="329.0" layoutY="313.0" mnemonicParsing="false" onAction="#createVehicle" prefHeight="26.0" prefWidth="62.0" text="Gravar" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
+
