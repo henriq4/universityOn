@@ -24,4 +24,9 @@ public class ListVehicles {
     }
     this.vehicles.getItems().addAll(vehicles);
   }
+
+    @FXML
+    private void goToMenu() throws IOException {
+        App.setRoot("menu");
+    }
 }
