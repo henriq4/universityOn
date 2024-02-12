@@ -1,0 +1,94 @@
+{
+  "name": "Duplo Balanceamento",
+  "states": [
+    "q0",
+    "q1",
+    "q2",
+    "q3",
+    "q4"
+  ],
+  "read_alphabet": ["a", "b"],
+  "write_alphabet": ["A", "B"],
+  "blank": "_",
+  "initial_state": "q0",
+  "final_states": ["q4"],
+  "transitions": [
+    {
+      "from_state": "q0",
+      "read": "a",
+      "write": "A",
+      "to_state": "q1",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q0",
+      "read": "B",
+      "write": "B",
+      "to_state": "q3",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q0",
+      "read": "_",
+      "write": "_",
+      "to_state": "q4",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q1",
+      "read": "a",
+      "write": "a",
+      "to_state": "q1",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q1",
+      "read": "b",
+      "write": "B",
+      "to_state": "q2",
+      "move_direction": "l"
+    },
+    {
+      "from_state": "q1",
+      "read": "B",
+      "write": "B",
+      "to_state": "q1",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q2",
+      "read": "a",
+      "write": "a",
+      "to_state": "q2",
+      "move_direction": "l"
+    },
+    {
+      "from_state": "q2",
+      "read": "A",
+      "write": "A",
+      "to_state": "q0",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q2",
+      "read": "B",
+      "write": "B",
+      "to_state": "q2",
+      "move_direction": "l"
+    },
+    {
+      "from_state": "q3",
+      "read": "B",
+      "write": "B",
+      "to_state": "q3",
+      "move_direction": "r"
+    },
+    {
+      "from_state": "q3",
+      "read": "_",
+      "write": "_",
+      "to_state": "q4",
+      "move_direction": "l"
+    }
+  ]
+}
