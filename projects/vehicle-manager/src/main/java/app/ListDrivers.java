@@ -24,4 +24,9 @@ public class ListDrivers {
     }
     this.drivers.getItems().addAll(drivers);
   }
+
+    @FXML
+    private void goToMenu() throws IOException {
+        App.setRoot("menu");
+    }
 }

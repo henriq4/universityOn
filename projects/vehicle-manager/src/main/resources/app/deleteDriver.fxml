@@ -14,9 +14,9 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="Menu">
+        <Menu mnemonicParsing="false" onAction="#goToMenu" text="Menu">
           <items>
-            <MenuItem mnemonicParsing="false" text="Valtar ao menu" />
+            <MenuItem mnemonicParsing="false" onAction="#goToMenu" text="Valtar ao menu" />
           </items>
         </Menu>
       </menus>
