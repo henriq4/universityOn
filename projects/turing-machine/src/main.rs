@@ -1,5 +1,5 @@
-use std::collections::{HashMap};
-use std::fs;
+use std::collections::{HashMap, LinkedList};
+use std::{fs, process};
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
@@ -9,6 +9,20 @@ struct Transition {
     write: char,
     to_state: Box<str>,
     move_direction: char,
+}
+
+impl Transition {
+    pub fn key(&self) -> String {
+        generate_key(&*self.from_state, self.read)
+    }
+
+    pub fn value(&self) -> TransitionValue {
+        TransitionValue {
+            move_direction: self.move_direction,
+            to_state: Box::from(&*self.to_state),
+            write: self.write,
+        }
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -42,20 +56,6 @@ fn generate_key(s: &str, r: char) -> String {
     format!("{}{}", s, r)
 }
 
-impl Transition {
-    pub fn key(&self) -> String {
-        generate_key(&*self.from_state, self.read)
-    }
-
-    pub fn value(&self) -> TransitionValue {
-        TransitionValue {
-            move_direction: self.move_direction,
-            to_state: Box::from(&*self.to_state),
-            write: self.write,
-        }
-    }
-}
-
 fn process_turing_machine(mt: &TuringMachine) -> HashMap<String, TransitionValue> {
     let mut aa = HashMap::new();
 
@@ -66,24 +66,77 @@ fn process_turing_machine(mt: &TuringMachine) -> HashMap<String, TransitionValue
     return aa;
 }
 
-fn delta<'a>(s: &'a str, r: char, aa: &'a HashMap<String, TransitionValue>) -> &'a str {
+fn process_tape(tape: &str) -> LinkedList<char> {
+    let mut tapeLL: LinkedList<char> = LinkedList::new();
+
+    for c in tape.chars() {
+        tapeLL.push_back(c);
+    }
+
+    return tapeLL;
+}
+
+fn delta<'a>(s: &'a str, r: char, aa: &'a HashMap<String, TransitionValue>) -> &'a TransitionValue {
     let key = generate_key(s, r);
 
     match aa.get(&key) {
-        Some(value) => &*value.to_state,
-        None => ""
+        Some(value) => value,
+        None => process::exit(1) // Não tem transition, exit.
     }
 }
 
 fn main() {
-    let tape = read_tape("./tests/tape.txt");
     let mt = read_turing_machine("./tests/mt.json");
+    let relation_state_transition = process_turing_machine(&mt);
 
-    let aa = process_turing_machine(&mt);
+    let tape = read_tape("./tests/tape.txt");
+    let mut bb = &mut process_tape(&*tape);
 
-    let mut state = mt.initial_state;
+    let mut current_state = &mt.initial_state;
+    let mut iter = &mut bb.iter();
 
-    for b in tape.chars() {
-        delta(&*state, b, &aa);
+    let mut worker;
+
+    for input in tape.chars() {
+        worker = delta(&*current_state, input, &relation_state_transition);
+
+        for aaaa in &mt.final_states {
+            if (&worker.to_state == aaaa) {
+                println!("Estado final");
+                process::exit(0);
+            }
+        } // Se o to_state for igual a um dos estados finais, encerra
+
+        if (worker.write == input) {
+            if worker.move_direction == 'r' {
+                println!("hello");
+                // &iter.next();
+            }
+
+            if worker.move_direction == 'l' {
+                println!("hello 2");
+                // &iter.next_back();
+            }
+        } // Se o write for igual ao input, não precisa sobreescrever
+
+        if (worker.write != input) {
+            if worker.move_direction == 'r' {
+                println!("hello 3");
+                // &iter.next();
+            }
+
+            if worker.move_direction == 'l' {
+                println!("hello 4");
+                // &iter.next_back();
+            }
+        }
+
+        bb.back_mut().replace(&mut 'H');
+
+        println!("{:?}", bb);
+
+        current_state = &worker.to_state;
+
+        println!("Var: {:?}", worker);
     }
 }
