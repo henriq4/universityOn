@@ -6,6 +6,7 @@ import javafx.scene.control.ListView;
 import model.Driver;
 import util.Dao;
 
+import java.io.IOException;
 import java.util.List;
 
 public class ListDrivers {
