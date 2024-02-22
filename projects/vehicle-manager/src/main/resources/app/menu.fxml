@@ -32,7 +32,8 @@
           <items>
             <MenuItem mnemonicParsing="false" onAction="#withdrawVehicle" text="Retirada" />
             <MenuItem mnemonicParsing="false" onAction="#withdrawDevolution" text="Devolução" />
-            <MenuItem mnemonicParsing="false" onAction="#listWithdraws" text="Busca" />
+            <MenuItem mnemonicParsing="false" onAction="#listWithdraws" text="Listar" />
+            <MenuItem mnemonicParsing="false" onAction="#getWithdrawVehicle" text="Buscar" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" onAction="#exit" text="Sair">

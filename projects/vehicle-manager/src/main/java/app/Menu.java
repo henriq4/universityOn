@@ -54,6 +54,11 @@ public class Menu {
     App.setRoot("withdrawDevolution");
   }
 
+  @FXML
+  private void getWithdrawVehicle() throws IOException {
+    App.setRoot("getWithdrawVehicle");
+  }
+
     @FXML
     private void exit(){
         Platform.exit();
