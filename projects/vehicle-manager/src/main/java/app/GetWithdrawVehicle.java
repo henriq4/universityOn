@@ -58,6 +58,14 @@ public class GetWithdrawVehicle {
           if (String.valueOf(vehicleUse.getWithdraw()).equals(String.valueOf(date))) {
             drivers.add(vehicleUse.getDriver().getName() + " " + vehicleUse.getDriver().getCnh());
           }
+
+         else if (String.valueOf(vehicleUse.getDevolution()).equals(String.valueOf(date))) {
+            drivers.add(vehicleUse.getDriver().getName() + " " + vehicleUse.getDriver().getCnh());
+          }
+
+          else if (date.isAfter(vehicleUse.getWithdraw()) && date.isBefore(vehicleUse.getDevolution())) {
+            drivers.add(vehicleUse.getDriver().getName() + " " + vehicleUse.getDriver().getCnh());
+          }
         }
       }
 
