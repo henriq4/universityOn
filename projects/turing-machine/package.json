@@ -1,0 +1,11 @@
+{
+  "name": "turing-machine",
+  "version": "1.0.0",
+  "author": "Henrique GC <henriq4net@gmail.com>",
+  "scripts": {
+    "start": "tsc && node dist/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
