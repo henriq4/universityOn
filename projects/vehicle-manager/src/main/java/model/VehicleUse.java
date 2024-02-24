@@ -91,4 +91,9 @@ public class VehicleUse implements Serializable, Persistivel {
         this.devolution = devolution;
     }
 
+    @Override
+    public String toString() {
+        return vehicle + " | " + driver;
+    }
+
 }
