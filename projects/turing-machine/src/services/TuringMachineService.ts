@@ -10,8 +10,8 @@ export class TuringMachineService {
     let head = 0;
     let state = this.turingMachine.initial;
 
-    while (!this.turingMachine.final.includes(state) && tape[head]) {
-      const current = tape[head];
+    while (!this.turingMachine.final.includes(state)) {
+      const current = tape[head] || this.turingMachine.white;
 
       const transition = this.turingMachine.transitions.find(
         t => t.from === state && t.read === current,
