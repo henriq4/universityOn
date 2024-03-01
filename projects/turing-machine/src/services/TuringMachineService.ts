@@ -4,7 +4,7 @@ import { TuringMachine } from "../models/TuringMachine";
 export class TuringMachineService {
   constructor(private turingMachine: TuringMachine) {}
 
-  run(input: string): boolean {
+  execute(input: string): boolean {
     const tape = input.split("");
 
     let head = 0;
